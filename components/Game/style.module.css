@@ -1,0 +1,21 @@
+.gameContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #6096BA;
+    gap: 2em;
+}
+
+.btn {
+    border: solid 2px #E7ECEF;
+    background: #274C77;
+    color: #E7ECEF;
+    padding: 1em 2em
+}
+.btn:hover {
+    background: #E7ECEF;
+    color: #274C77;
+
+}
