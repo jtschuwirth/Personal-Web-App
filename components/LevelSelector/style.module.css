@@ -1,0 +1,28 @@
+.btn_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #6096BA;
+    gap: 2em;
+    padding: 1em;
+}
+
+.btn {
+    border: solid 2px #274C77;
+    background: #E7ECEF;
+    color: #274C77;
+    padding: 1em 2em
+}
+.btn:hover {
+    background: #E7ECEF;
+    color: #274C77;
+
+}
+
+.btn_selected {
+    border: solid 2px #274C77;
+    background: #274C77;
+    color: #E7ECEF;
+    padding: 1em 2em
+}
