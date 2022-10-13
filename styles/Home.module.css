@@ -5,9 +5,16 @@
 .main {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-direction: column;
-  min-height: 100%;
+  min-height: 100vh;
   background-color: #E63946;
+}
+
+.main_content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .page_title {
