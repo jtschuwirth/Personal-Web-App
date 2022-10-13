@@ -28,7 +28,8 @@
     border: solid 2px #1D3557;
     background: #A8DADC;
     color: #1D3557;
-    padding: 1em 2em
+    padding: 1em 2em;
+    width: 180px;
 }
 .btn:hover {
     background: #1D3557;

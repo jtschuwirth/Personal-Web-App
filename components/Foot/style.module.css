@@ -1,0 +1,10 @@
+.github_icon {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em;
+    margin:1em;
+    cursor: pointer;
+    background-color: #A8DADC;
+    border-radius:15px;
+}
