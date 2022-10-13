@@ -36,3 +36,9 @@
     color: #F1FAEE;
 
 }
+
+@media (max-width: 360px) {
+    .phraseContainer {
+        width: 300px;
+    }
+  }

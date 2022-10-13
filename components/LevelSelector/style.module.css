@@ -25,3 +25,9 @@
     color: #F1FAEE;
     padding: 1em 2em
 }
+
+@media (max-width: 360px) {
+    .btn_container {
+        gap:1em;
+    }
+  }
