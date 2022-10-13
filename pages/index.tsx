@@ -8,6 +8,7 @@ const Home: NextPage = () => {
   const [level, setLevel] = useState(1);
   return (
     <div className={styles.main}>
+      <span className={styles.page_title}>We're not really strangers</span>
       <LevelSelector level={level} setLevel={setLevel} />
       <Game level={level}/>
     </div>

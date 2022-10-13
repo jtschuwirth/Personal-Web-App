@@ -3,7 +3,18 @@
 }
 
 .main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   height: 100%;
+  background-color: #E63946;
+}
+
+.page_title {
+  color: #F1FAEE;
+  padding: 1em;
+  font-size: 30px;
+
 }
 
 .footer {

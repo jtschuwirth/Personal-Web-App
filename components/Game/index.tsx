@@ -1,5 +1,5 @@
 import styles from "./style.module.css"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios"
 
 interface Props {
@@ -8,10 +8,17 @@ interface Props {
 
 export const Game  = ({level}:Props) => {
   const [phrase, setPhrase] = useState("");
+
+  useEffect(() => {
+    async function warmBackend() {
+      await axios.get(`https://59fxcxkow4.execute-api.us-east-1.amazonaws.com/dev/icebreakers/phrases?level=1`)
+    }
+    warmBackend()
+  }, []);
+
   async function handleClick() {
     let response = await axios.get(`https://59fxcxkow4.execute-api.us-east-1.amazonaws.com/dev/icebreakers/phrases?level=${level}`)
     setPhrase(response.data[0].phrase)
-    console.log(response)
 
   }
   return (

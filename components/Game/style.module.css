@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #E63946;
     gap: 2em;
     padding: 5em;
 }
