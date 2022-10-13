@@ -3,26 +3,26 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: #6096BA;
+    background-color: #E63946;
     gap: 2em;
     padding: 1em;
 }
 
 .btn {
-    border: solid 2px #274C77;
-    background: #E7ECEF;
-    color: #274C77;
+    border: solid 2px hsl(215, 50%, 23%);
+    background: #A8DADC;
+    color: #1D3557;
     padding: 1em 2em
 }
 .btn:hover {
-    background: #E7ECEF;
-    color: #274C77;
+    background: #1D3557;
+    color: #F1FAEE;
 
 }
 
 .btn_selected {
-    border: solid 2px #274C77;
-    background: #274C77;
-    color: #E7ECEF;
+    border: solid 2px #1D3557;
+    background: #1D3557;
+    color: #F1FAEE;
     padding: 1em 2em
 }
