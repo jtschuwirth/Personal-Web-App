@@ -7,13 +7,7 @@ interface Props {
   level: number
 }
 
-interface Phrase {
-  phrase:string;
-  lvl:string;
-}
-
 export const Game  = ({level}:Props) => {
-  const [buffer, setBuffer] = useState<Phrase[]>([])
   const [phrase, setPhrase] = useState("");
   const [loading, setLoading] = useState(false)
   const [opinion, setOpinion] = useState("none")
@@ -51,28 +45,13 @@ export const Game  = ({level}:Props) => {
       }
 
       axios.post(`https://59fxcxkow4.execute-api.us-east-1.amazonaws.com/dev/icebreakers/opinion`, data, config
-      ).then( function() {
-        //console.log(data)
-
-      }).catch( function(error) {
+      ).catch( function(error) {
         console.log(error)
       })
     }
-
-    if (buffer.length===0 || phraseLevel !== level) {
-      let response = await axios.get(`https://59fxcxkow4.execute-api.us-east-1.amazonaws.com/dev/icebreakers/phrases?n=31&level=${level}`)
-      setPhrase(response.data[0].phrase)
-      setPhraseLevel(parseInt(response.data[0].lvl))
-      response.data.shift()
-      setBuffer(response.data)
-    } else {
-      setPhrase(buffer[0].phrase)
-      setPhraseLevel(parseInt(buffer[0].lvl))
-      let new_buffer = [...buffer]
-      new_buffer.shift()
-      setBuffer(new_buffer)
-    }
-
+    let response = await axios.get(`https://59fxcxkow4.execute-api.us-east-1.amazonaws.com/dev/icebreakers/phrases?level=${level}`)
+    setPhrase(response.data[0].phrase)
+    setPhraseLevel(level)
     setOpinion("none")
     setLoading(false)
 
