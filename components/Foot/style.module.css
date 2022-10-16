@@ -7,4 +7,12 @@
     cursor: pointer;
     background-color: #A8DADC;
     border-radius:15px;
+    border: 2px solid #1D3557
 }
+
+@media (hover: hover) {
+    .github_icon:hover {
+        background: #6839E6;
+        color: #F1FAEE;
+    }
+  }

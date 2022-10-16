@@ -83,7 +83,7 @@ export const Game  = ({level}:Props) => {
         <div 
           className={opinion==="like"?styles.like_container_active:styles.like_container}
           onClick={() => handleLike()}
-          ><BiLike size={30}/> </div>
+          ><BiLike size={30}/></div>
       </div>
       <div className={styles.phraseContainer}>
         <span className={styles.phrase}>{phrase}</span>

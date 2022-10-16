@@ -8,20 +8,15 @@
 }
 
 .btn {
-    border: solid 2px hsl(215, 50%, 23%);
+    border: solid 2px #1D3557;
     background: #A8DADC;
     color: #1D3557;
     padding: 1em 2em
 }
-.btn:hover {
-    background: #1D3557;
-    color: #F1FAEE;
-
-}
 
 .btn_selected {
     border: solid 2px #1D3557;
-    background: #1D3557;
+    background: #6839E6;
     color: #F1FAEE;
     padding: 1em 2em;
     border: 2px solid black;
@@ -35,7 +30,7 @@
 
 @media (hover: hover) {
     .btn:hover {
-        background: #1D3557;
+        background: #6839E6;
         color: #F1FAEE;
         border: 2px solid black
     }

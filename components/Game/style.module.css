@@ -39,9 +39,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid black;
+    border: 2px solid #1D3557;
     padding: 0.5em 3em;
-    background-color: #1D3557;
+    background-color: #6839E6;
     color: #F1FAEE;
 }
 
@@ -69,13 +69,11 @@
 
 @media (hover: hover) {
     .btn:hover {
-        background: #1D3557;
+        background: #6839E6;
         color: #F1FAEE;
-        border: 2px solid black
     }
     .like_container:hover {
-        background-color: #1D3557;
+        background-color: #6839E6;
         color: #F1FAEE;
-        border: 2px solid black
     }
   }
