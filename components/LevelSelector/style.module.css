@@ -23,11 +23,20 @@
     border: solid 2px #1D3557;
     background: #1D3557;
     color: #F1FAEE;
-    padding: 1em 2em
+    padding: 1em 2em;
+    border: 2px solid black;
 }
 
 @media (max-width: 360px) {
     .btn_container {
         gap:1em;
+    }
+  }
+
+@media (hover: hover) {
+    .btn:hover {
+        background: #1D3557;
+        color: #F1FAEE;
+        border: 2px solid black
     }
   }

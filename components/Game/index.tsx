@@ -1,7 +1,7 @@
 import styles from "./style.module.css"
 import { useState, useEffect } from "react";
 import axios from "axios"
-import {GrLike, GrDislike} from "react-icons/gr"
+import {BiLike, BiDislike} from "react-icons/bi"
 
 interface Props {
   level: number
@@ -79,11 +79,11 @@ export const Game  = ({level}:Props) => {
         <div 
           className={opinion==="dislike"?styles.like_container_active:styles.like_container}
           onClick={() => handleDislike()}
-          ><GrDislike /></div>
+          ><BiDislike size={30}/></div>
         <div 
           className={opinion==="like"?styles.like_container_active:styles.like_container}
           onClick={() => handleLike()}
-          ><GrLike /> </div>
+          ><BiLike size={30}/> </div>
       </div>
       <div className={styles.phraseContainer}>
         <span className={styles.phrase}>{phrase}</span>

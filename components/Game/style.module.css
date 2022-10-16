@@ -31,21 +31,18 @@
     justify-content: center;
     align-items: center;
     border: 2px solid #1D3557;
-    padding: 1em 3em;
+    padding: 0.5em 3em;
     background-color: #A8DADC
-}
-
-.like_container:hover {
-    background-color: #1D3557;
 }
 
 .like_container_active {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #1D3557;
-    padding: 1em 3em;
-    background-color: #1D3557
+    border: 2px solid black;
+    padding: 0.5em 3em;
+    background-color: #1D3557;
+    color: #F1FAEE;
 }
 
 
@@ -62,14 +59,23 @@
     padding: 1em 2em;
     width: 180px;
 }
-.btn:hover {
-    background: #1D3557;
-    color: #F1FAEE;
 
-}
 
 @media (max-width: 360px) {
     .phraseContainer {
         width: 300px;
+    }
+  }
+
+@media (hover: hover) {
+    .btn:hover {
+        background: #1D3557;
+        color: #F1FAEE;
+        border: 2px solid black
+    }
+    .like_container:hover {
+        background-color: #1D3557;
+        color: #F1FAEE;
+        border: 2px solid black
     }
   }
