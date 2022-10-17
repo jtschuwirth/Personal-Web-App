@@ -25,7 +25,7 @@ export const Game  = ({level, game}:Props) => {
       await axios.get(`https://59fxcxkow4.execute-api.us-east-1.amazonaws.com/dev/${game}/phrases?level=1`)
     }
     warmBackend()
-  }, []);
+  }, [game]);
 
   async function handleClick() {
     if (loading) return;
