@@ -4,7 +4,8 @@ import axios from "axios"
 import {BiLike, BiDislike} from "react-icons/bi"
 
 interface Props {
-  level: number
+  level:number;
+  game:string;
 }
 
 interface Phrase {
@@ -12,7 +13,7 @@ interface Phrase {
   lvl:string;
 }
 
-export const Game  = ({level}:Props) => {
+export const Game  = ({level, game}:Props) => {
   const [buffer, setBuffer] = useState<Phrase[]>([])
   const [phrase, setPhrase] = useState("");
   const [loading, setLoading] = useState(false)
@@ -21,7 +22,7 @@ export const Game  = ({level}:Props) => {
 
   useEffect(() => {
     async function warmBackend() {
-      await axios.get(`https://59fxcxkow4.execute-api.us-east-1.amazonaws.com/dev/icebreakers/phrases?level=1`)
+      await axios.get(`https://59fxcxkow4.execute-api.us-east-1.amazonaws.com/dev/${game}/phrases?level=1`)
     }
     warmBackend()
   }, []);
@@ -50,7 +51,7 @@ export const Game  = ({level}:Props) => {
         level:phraseLevel
       }
 
-      axios.post(`https://59fxcxkow4.execute-api.us-east-1.amazonaws.com/dev/icebreakers/opinion`, data, config
+      axios.post(`https://59fxcxkow4.execute-api.us-east-1.amazonaws.com/dev/${game}/opinion`, data, config
       ).then( function() {
         //console.log(data)
 
@@ -60,7 +61,7 @@ export const Game  = ({level}:Props) => {
     }
 
     if (buffer.length===0 || phraseLevel !== level) {
-      let response = await axios.get(`https://59fxcxkow4.execute-api.us-east-1.amazonaws.com/dev/icebreakers/phrases?n=31&level=${level}`)
+      let response = await axios.get(`https://59fxcxkow4.execute-api.us-east-1.amazonaws.com/dev/${game}/phrases?n=31&level=${level}`)
       setPhrase(response.data[0].phrase)
       setPhraseLevel(parseInt(response.data[0].lvl))
       response.data.shift()
@@ -95,21 +96,21 @@ export const Game  = ({level}:Props) => {
   }
 
   return (
-    <div className={styles.gameContainer}>
+    <div className={styles.game_container}>
       <div className={styles.opinion_container}>
         <div 
-          className={opinion==="dislike"?styles.like_container_active:styles.like_container}
+          className={opinion==="dislike"?styles[`like_container_active_${game}`]:styles[`like_container_${game}`]}
           onClick={() => handleDislike()}
           ><BiDislike size={20}/></div>
         <div 
-          className={opinion==="like"?styles.like_container_active:styles.like_container}
+          className={opinion==="like"?styles[`like_container_active_${game}`]:styles[`like_container_${game}`]}
           onClick={() => handleLike()}
           ><BiLike size={20}/></div>
       </div>
-      <div className={styles.phraseContainer}>
+      <div className={styles.phrase_container}>
         <span className={styles.phrase}>{phrase}</span>
       </div>
-      <button className={styles.btn} onClick={() => handleClick()}>{loading?"Loading":"Get new prompt"}</button>
+      <button className={styles[`btn_${game}`]} onClick={() => handleClick()}>{loading?"Loading":"Get new prompt"}</button>
     </div>
 
   );

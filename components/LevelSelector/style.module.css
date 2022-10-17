@@ -7,16 +7,31 @@
     padding: 1em;
 }
 
-.btn {
+.btn_icebreakers {
     border: solid 2px #1D3557;
     background: #A8DADC;
     color: #1D3557;
     padding: 1em 2em
 }
 
-.btn_selected {
+.btn_nuncanunca {
+    border: solid 2px #1D3557;
+    background: #C9D6EA;
+    color: #1D3557;
+    padding: 1em 2em
+}
+
+.btn_selected_icebreakers  {
     border: solid 2px #1D3557;
     background: #6839E6;
+    color: #F1FAEE;
+    padding: 1em 2em;
+    border: 2px solid black;
+}
+
+.btn_selected_nuncanunca {
+    border: solid 2px #1D3557;
+    background: #663F46;
     color: #F1FAEE;
     padding: 1em 2em;
     border: 2px solid black;
@@ -29,8 +44,13 @@
   }
 
 @media (hover: hover) {
-    .btn:hover {
+    .btn_icebreakers:hover {
         background: #6839E6;
+        color: #F1FAEE;
+        border: 2px solid black
+    }
+    .btn_nuncanunca:hover {
+        background: #663F46;
         color: #F1FAEE;
         border: 2px solid black
     }

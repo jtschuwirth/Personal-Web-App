@@ -1,4 +1,4 @@
-.gameContainer {
+.game_container {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -7,7 +7,7 @@
     padding: 5em;
 }
 
-.phraseContainer {
+.phrase_container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,6 +19,7 @@
     border: 2px solid #1D3557;
 }
 
+
 .opinion_container {
     display: flex;
     flex-direction: row;
@@ -26,7 +27,7 @@
     gap: 1em;
 }
 
-.like_container {
+.like_container_icebreakers {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,13 +36,32 @@
     background-color: #A8DADC
 }
 
-.like_container_active {
+.like_container_nuncanunca {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #1D3557;
+    padding: 0.5em 3em;
+    background-color: #C9D6EA
+}
+
+.like_container_active_icebreakers {
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px solid #1D3557;
     padding: 0.5em 3em;
     background-color: #6839E6;
+    color: #F1FAEE;
+}
+
+.like_container_active_nuncanunca {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #1D3557;
+    padding: 0.5em 3em;
+    background-color: #663F46;
     color: #F1FAEE;
 }
 
@@ -52,7 +72,7 @@
     color: #1D3557
 }
 
-.btn {
+.btn_icebreakers {
     border: solid 2px #1D3557;
     background: #A8DADC;
     color: #1D3557;
@@ -60,20 +80,36 @@
     width: 180px;
 }
 
+.btn_nuncanunca {
+    border: solid 2px #1D3557;
+    background: #C9D6EA;
+    color: #1D3557;
+    padding: 1em 2em;
+    width: 180px;
+}
+
 
 @media (max-width: 360px) {
-    .phraseContainer {
+    .phrase_container  {
         width: 300px;
     }
   }
 
 @media (hover: hover) {
-    .btn:hover {
+    .btn_icebreakers:hover {
         background: #6839E6;
         color: #F1FAEE;
     }
-    .like_container:hover {
+    .btn_nuncanunca:hover {
+        background: #663F46;
+        color: #F1FAEE;
+    }
+    .like_container_icebreakers:hover {
         background-color: #6839E6;
+        color: #F1FAEE;
+    }
+    .like_container_nuncanunca:hover {
+        background-color: #663F46;
         color: #F1FAEE;
     }
   }

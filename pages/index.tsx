@@ -1,22 +1,26 @@
 import type { NextPage } from 'next'
-import { useState } from "react";
 import styles from '../styles/Home.module.css'
-import { Game } from '../components/Game'
-import { LevelSelector } from "../components/LevelSelector"
+import Link  from 'next/link'
 import { Foot } from "../components/Foot"
 
 const Home: NextPage = () => {
-  const [level, setLevel] = useState(1);
   return (
     <div className={styles.main}>
       <div className={styles.main_content}>
-        <span className={styles.page_title}>We are not really strangers</span>
-        <LevelSelector level={level} setLevel={setLevel} />
-        <Game level={level}/>
-        </div>
-      <Foot />
-    </div>
+      <Link href="/wnrs" >
+        <div className={styles.game_container}>
+          <span className={styles.game_title}>We are not really strangers</span>
 
+        </div>
+      </Link>
+      <Link href="/nhie" >
+        <div className={styles.game_container}>
+          <span className={styles.game_title}>Never have i ever</span>
+        </div>
+      </Link>
+      </div>
+      <Foot game="index"/>
+    </div>
   )
 }
 
