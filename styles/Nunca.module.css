@@ -1,6 +1,3 @@
-.container {
-  padding: 0 2rem;
-}
 
 .main {
   display: flex;
@@ -17,9 +14,4 @@
   flex-direction: column;
 }
 
-.page_title {
-  color: #F1FAEE;
-  padding: 1em;
-  font-size: 30px;
-  text-align: center;
-}
+

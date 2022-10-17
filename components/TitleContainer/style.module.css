@@ -1,0 +1,12 @@
+.title_container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .page_title {
+    color: #F1FAEE;
+    padding: 0.5em;
+    font-size: 30px;
+    text-align: center;
+  }

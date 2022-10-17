@@ -1,28 +1,4 @@
-.github_icon_icebreakers {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-    padding: 0.5em;
-    margin:1em;
-    cursor: pointer;
-    background-color: #A8DADC;
-    border-radius:15px;
-    border: 2px solid #1D3557
-}
-
-.github_icon_nuncanunca {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-    padding: 0.5em;
-    margin:1em;
-    cursor: pointer;
-    background-color: #C9D6EA;
-    border-radius:15px;
-    border: 2px solid #1D3557
-}
-
-.github_icon_index {
+.github_icon {
     display: flex;
     align-items: center;
     gap: 0.5em;
@@ -31,21 +7,12 @@
     cursor: pointer;
     border-radius:15px;
     color: #F1FAEE;
-    border: 2px solid #F1FAEE;
+    border: 2px solid #F1FAEE
 }
 
+
 @media (hover: hover) {
-    .github_icon_icebreakers:hover {
-        background: #6839E6;
-        color: #F1FAEE;
-    }
-
-    .github_icon_nuncanunca:hover {
-        background: #663F46;
-        color: #F1FAEE;
-    }
-
-    .github_icon_index:hover {
+    .github_icon:hover {
         background: #663F46;
         color: #F1FAEE;
     }

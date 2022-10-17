@@ -19,7 +19,7 @@ const Home: NextPage = () => {
         </div>
       </Link>
       </div>
-      <Foot game="index"/>
+      <Foot />
     </div>
   )
 }

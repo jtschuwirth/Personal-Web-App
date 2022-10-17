@@ -40,7 +40,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #1D3557;
+    border: 2px solid black;
     padding: 0.5em 3em;
     background-color: #C9D6EA
 }
@@ -59,7 +59,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #1D3557;
+    border: 2px solid black;
     padding: 0.5em 3em;
     background-color: #663F46;
     color: #F1FAEE;
@@ -81,7 +81,7 @@
 }
 
 .btn_nuncanunca {
-    border: solid 2px #1D3557;
+    border: solid 2px black;
     background: #C9D6EA;
     color: #1D3557;
     padding: 1em 2em;

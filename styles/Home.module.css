@@ -1,8 +1,5 @@
-.container {
-    padding: 0 2rem;
-  }
   
-  .main {
+.main {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -11,7 +8,7 @@
     align-items: center;
   }
 
-  .game_container {
+.game_container {
     width: 400px;
     border-top: 1px solid white;
     border-bottom: 1px solid white;
@@ -22,30 +19,16 @@
 
   }
 
-  .game_title {
+.game_title {
     color: #F1FAEE;
     padding: 1em;
     font-size: 30px;
   }
 
-  .title {
-    color: #F1FAEE;
-    padding: 1em;
-    font-size: 30px;
-    text-align: center;
-  }
-
-  .main_content {
+.main_content {
     display: flex;
     align-items: center;
     flex-direction: column;
     gap:5em;
     padding: 5em;
-  }
-  
-  .page_title {
-    color: #F1FAEE;
-    padding: 1em;
-    font-size: 30px;
-    text-align: center;
   }

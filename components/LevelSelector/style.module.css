@@ -22,19 +22,17 @@
 }
 
 .btn_selected_icebreakers  {
-    border: solid 2px #1D3557;
+    border: solid 2px black;
     background: #6839E6;
     color: #F1FAEE;
     padding: 1em 2em;
-    border: 2px solid black;
 }
 
 .btn_selected_nuncanunca {
-    border: solid 2px #1D3557;
+    border: solid 2px black;
     background: #663F46;
     color: #F1FAEE;
     padding: 1em 2em;
-    border: 2px solid black;
 }
 
 @media (max-width: 360px) {
