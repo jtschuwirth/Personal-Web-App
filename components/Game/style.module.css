@@ -33,7 +33,8 @@
     align-items: center;
     border: 2px solid #1D3557;
     padding: 0.5em 3em;
-    background-color: #A8DADC
+    background-color: #A8DADC;
+    color: black;
 }
 
 .like_container_nuncanunca {
@@ -42,7 +43,8 @@
     align-items: center;
     border: 2px solid black;
     padding: 0.5em 3em;
-    background-color: #C9D6EA
+    background-color: #C9D6EA;
+    color: black;
 }
 
 .like_container_active_icebreakers {
@@ -105,11 +107,9 @@
         color: #F1FAEE;
     }
     .like_container_icebreakers:hover {
-        background-color: #6839E6;
-        color: #F1FAEE;
+        opacity: 0.6;
     }
     .like_container_nuncanunca:hover {
-        background-color: #663F46;
-        color: #F1FAEE;
+        opacity: 0.6;
     }
   }

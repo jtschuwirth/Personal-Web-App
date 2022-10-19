@@ -11,7 +11,7 @@ export const Title = ({title}:Props) => {
 
     return (
         <div className={styles.title_container} onClick={() => router.push("/")}>
-          <MdOutlineArrowBackIosNew size={20} color="white"/>
+          <MdOutlineArrowBackIosNew size={20} />
           <span className={styles.page_title}>{title}</span>
         </div>
     );

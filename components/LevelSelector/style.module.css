@@ -15,7 +15,7 @@
 }
 
 .btn_nuncanunca {
-    border: solid 2px #1D3557;
+    border: solid 2px black;
     background: #C9D6EA;
     color: #1D3557;
     padding: 1em 2em
@@ -43,13 +43,9 @@
 
 @media (hover: hover) {
     .btn_icebreakers:hover {
-        background: #6839E6;
-        color: #F1FAEE;
-        border: 2px solid black
+        opacity: 0.6;
     }
     .btn_nuncanunca:hover {
-        background: #663F46;
-        color: #F1FAEE;
-        border: 2px solid black
+        opacity: 0.6;
     }
   }
