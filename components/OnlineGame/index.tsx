@@ -108,6 +108,7 @@ export const Game = forwardRef(({level, game}:Props, ref) => {
       <div className={styles.phrase_container}>
         <span className={styles.phrase}>{phrase}</span>
       </div>
+      <button className={styles[`btn_${game}`]} onClick={() => handleNewTurn()}>{loading?"Loading":"Skip Prompt"}</button>
     </div>
 
   );

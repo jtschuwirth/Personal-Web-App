@@ -18,6 +18,7 @@ const Host: NextPage = () => {
   const [level, setLevel] = useState(1);
   const [playing_players, setPlayingPlayers] = useState<Players[]>([])
   const [done_players, setDonePlayers] = useState<Players[]>([])
+  const [answer, setAnswer] = useState(0)
   const [socket, setSocket] = useState<WebSocket>()
   const runs = useRef(0)
   const handleNewTurn = useRef({
@@ -47,7 +48,9 @@ const Host: NextPage = () => {
 
         } else if (data?.round_end) {
           setPlayingPlayers([])
+          setAnswer(0)
           data.round_end.map((_:any) => setPlayingPlayers((players) => [...players, {id:_.connection_id, user_name:_.user_name, points:_.points}]))
+          data.round_end.map((_:any) => {if (parseInt(_.answer)===1) { setAnswer((answer) => answer+1)}})
           setDonePlayers([])
           handleNewTurn.current.handleNewTurn()
 
@@ -72,6 +75,7 @@ const Host: NextPage = () => {
           game="nuncanunca"
           ref={handleNewTurn}
           />
+          <span>Last Prompt: {answer} did it</span>
           <PlayerDisplay playing_players={playing_players} done_players={done_players} />
         </div>
       <Foot />
