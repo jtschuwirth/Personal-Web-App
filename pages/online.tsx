@@ -9,12 +9,10 @@ const NuncaNunca: NextPage = () => {
 
   return (
     <div className={styles.main}>
-      <div className={styles.main_content}>
         <Title title="Never have i ever... ONLINE" />
         <div className={styles.buttons}>
             <button className={styles.btn} onClick={() => router.push("/online/host")}>HOST</button>
             <button className={styles.btn} onClick={() => router.push("/online/game")}>PLAY</button>
-        </div>
         </div>
       <Foot />
     </div>

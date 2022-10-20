@@ -11,8 +11,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 10em;
-
+  justify-content: center;
 }
 
 .buttons {
@@ -21,10 +20,26 @@
 }
 .btn {
   padding: .5em 3em;
-  font-size: 32px;
+  font-size: 24px;
   background-color: #A8DADC;
   color: black;
   border-radius: 15px;
+}
+
+.input {
+  background-color: white;
+  border-radius: 15px;
+  padding: 0.5em 1em;
+  font-size: 16px;
+  width: 300px;
+  color:black
+}
+
+.select_name_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1em;
 }
 
 @media (hover: hover) {

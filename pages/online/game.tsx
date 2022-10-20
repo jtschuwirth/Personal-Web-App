@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import { useState, useEffect, useRef } from "react";
-import styles from '../../styles/WNRS.module.css'
+import styles from '../../styles/Online.module.css'
 import { Foot } from "../../components/Foot"
 import { Title } from '../../components/TitleContainer';
 import { Game } from "../../components/OnlinePlayer";
@@ -34,7 +34,6 @@ const GamePage: NextPage = () => {
   if (name==="") {
     return (
       <div className={styles.main}>
-        <div className={styles.main_content}>
           <Title title="Never have i ever... ONLINE" />
             <form onSubmit={onSubmit} className={styles.select_name_container}>
               <span>Pick a Name</span>
@@ -43,17 +42,14 @@ const GamePage: NextPage = () => {
             </form>
 
   
-          </div>
         <Foot />
       </div>
     )
   } else {
     return (
       <div className={styles.main}>
-        <div className={styles.main_content}>
           <Title title="Never have i ever... ONLINE" />
           <Game socket={socket}/>
-          </div>
         <Foot />
       </div>
     )
