@@ -6,11 +6,17 @@ interface Props {
 }
 
 export const Counter = ({count, setCount}:Props) => {
+
+    function handleCount(sum:number) {
+        if (count === 0 && sum===-1) return;
+        setCount((count:number) => count+sum)
+    }
+
     return (
         <div className={styles.counter}>
-            <button className={styles.counter_btn} onClick={() => setCount((count:number) => count-1)}>-</button>
-            {count}
-            <button className={styles.counter_btn} onClick={() => setCount((count:number) => count+1)}>+</button>
+            <button className={styles.counter_btn} onClick={() => handleCount(-1)}>-</button>
+            <div className={styles.counter_display}>{count}</div>
+            <button className={styles.counter_btn} onClick={() => handleCount(+1)}>+</button>
         </div>
 
     );

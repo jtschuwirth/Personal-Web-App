@@ -36,3 +36,33 @@
   flex-direction: column;
   gap: 1em;
 }
+
+.answer_container {
+  display: flex;
+  flex-direction: row;
+  gap:1em;
+  justify-content: center
+}
+
+.box1 {
+  font-size: 40px;
+  background-color: #82b366;
+  padding: 5px 20px;
+  border-radius: 15px;
+  border: 2px solid black;
+}
+
+.box2 {
+  font-size: 40px;
+  background-color: #b85450;
+  padding: 5px 20px;
+  border-radius: 15px;
+  border: 2px solid black;
+}
+
+.players {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+}

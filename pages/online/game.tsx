@@ -36,7 +36,7 @@ const GamePage: NextPage = () => {
       <div className={styles.main}>
           <Title title="Never have i ever... ONLINE" socket={socket}/>
             <form onSubmit={onSubmit} className={styles.select_name_container}>
-              <span>Pick a Name</span>
+              <span className={styles.pick_name}>Choose a Name</span>
               <input className={styles.input} name="name_input"/>
               <button className={styles.btn} type="submit">Join Game</button>
             </form>

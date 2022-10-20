@@ -4,6 +4,7 @@ interface Players {
     id: string;
     user_name:string;
     points:number;
+    last_turn_points:number;
   }
 
 interface Props {
@@ -17,7 +18,7 @@ export const PlayerDisplay = ({playing_players, done_players}:Props) => {
         <div className={styles.player_container}>
             <div className={styles.players_list}>
                 <span>Playing</span>
-                <span className={styles.players}>{playing_players.map((_) =><span key={_.id}>{_.user_name}: {_.points}</span>)}</span>
+                <span className={styles.players}>{playing_players.map((_) =><span key={_.id}>{_.user_name}: {_.points} (+{_.points-(_.last_turn_points||0)})</span>)}</span>
             </div>
             <div className={styles.players_list}>
                 <span>Done</span>

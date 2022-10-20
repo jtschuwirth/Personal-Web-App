@@ -17,9 +17,10 @@
 .buttons {
   display: flex;
   gap: 1em;
+  justify-content: center;
 }
 .btn {
-  padding: .5em 3em;
+  padding: .5em 2em;
   font-size: 24px;
   background-color: #A8DADC;
   color: black;
@@ -40,6 +41,11 @@
   align-items: center;
   flex-direction: column;
   gap: 1em;
+}
+
+.pick_name {
+  font-size: 40px;
+  color: white;
 }
 
 @media (hover: hover) {

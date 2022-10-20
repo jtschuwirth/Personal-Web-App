@@ -6,10 +6,26 @@
     font-size: 46px
 }
 
+.counter_display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 30px;
+    background-color: #A8DADC;
+    border: 2px solid black;
+    color: black;
+    border-radius: 15px;
+
+}
+
 .counter_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 50px;
     height: 50px;
     background-color: #A8DADC;
+    border: 2px solid black;
     color: black;
     border-radius: 15px;
 
