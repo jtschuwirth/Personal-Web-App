@@ -1,5 +1,5 @@
 import styles from "./style.module.css"
-import { useState, forwardRef, useEffect, useImperativeHandle  } from "react";
+import { useState, forwardRef, useImperativeHandle  } from "react";
 import axios from "axios"
 import {BiLike, BiDislike} from "react-icons/bi"
 
@@ -13,7 +13,8 @@ interface Phrase {
   lvl:string;
 }
 
-export const Game  = forwardRef(({level, game}:Props, ref) => {
+// eslint-disable-next-line react/display-name
+export const Game = forwardRef(({level, game}:Props, ref) => {
   const [buffer, setBuffer] = useState<Phrase[]>([])
   const [phrase, setPhrase] = useState("");
   const [loading, setLoading] = useState(false)
