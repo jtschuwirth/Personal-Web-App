@@ -18,6 +18,7 @@ const Host: NextPage = () => {
   const [level, setLevel] = useState(1);
   const [playing_players, setPlayingPlayers] = useState<Players[]>([])
   const [done_players, setDonePlayers] = useState<Players[]>([])
+  const [socket, setSocket] = useState<WebSocket>()
   const runs = useRef(0)
   const handleNewTurn = useRef({
     handleNewTurn: () => console.log("ref")
@@ -26,10 +27,11 @@ const Host: NextPage = () => {
   useEffect(() => {
     if (!runs.current) {
       handleNewTurn.current.handleNewTurn()
-      const socket = new WebSocket("wss://9s9l3p7u9a.execute-api.us-east-1.amazonaws.com/dev?name=host&host=1")
+      const newSocket = new WebSocket("wss://9s9l3p7u9a.execute-api.us-east-1.amazonaws.com/dev?name=host&host=1")
+      setSocket(newSocket)
       runs.current=1
 
-      socket.onmessage = (event) => {
+      newSocket.onmessage = (event) => {
         const data = JSON.parse(event.data)
 
         if (data?.new_connection) {
@@ -53,8 +55,8 @@ const Host: NextPage = () => {
       };
   
       window.onbeforeunload = function() {
-        socket.onclose = function () {}; // disable onclose handler first
-        socket.close();
+        newSocket.onclose = function () {}; // disable onclose handler first
+        newSocket.close();
       };
     }
   }, [runs]);
@@ -63,7 +65,7 @@ const Host: NextPage = () => {
   return (
     <div className={styles.main}>
       <div className={styles.main_content}>
-        <Title title="Never have i ever... ONLINE" />
+        <Title title="Never have i ever... ONLINE" socket={socket}/>
         <LevelSelector level={level} setLevel={setLevel} game="nuncanunca"/>
         <Game 
           level={level} 
