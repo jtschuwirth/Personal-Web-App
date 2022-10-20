@@ -15,7 +15,12 @@ const Home: NextPage = () => {
       </Link>
       <Link href="/nhie" >
         <div className={styles.game_container}>
-          <span className={styles.game_title}>Never have i ever</span>
+          <span className={styles.game_title}>Never have i ever ...</span>
+        </div>
+      </Link>
+      <Link href="/online" >
+        <div className={styles.game_container}>
+          <span className={styles.game_title}>Never have i ever ... ONLINE!</span>
         </div>
       </Link>
       </div>

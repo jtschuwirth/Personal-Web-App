@@ -1,0 +1,37 @@
+.game_container {
+    display: flex;
+    flex-direction: column;
+    gap:1em;
+}
+
+.choice {
+    display: flex;
+    gap: 1em;
+    width: 300px;
+    justify-content: center;
+}
+
+.btn {
+    padding: .5em 3em;
+    background-color: #A8DADC;
+    color: black;
+    flex:1
+  }
+.btn_active {
+    padding: .5em 3em;
+    background-color: #6839E6;
+    color: white;
+    flex:1
+}
+
+.desc {
+    width: 300px;
+    text-align: center;
+}
+  
+  @media (hover: hover) {
+    .btn:hover {
+        opacity: 0.8;
+    }
+  }
+  

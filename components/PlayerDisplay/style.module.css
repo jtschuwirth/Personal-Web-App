@@ -1,0 +1,20 @@
+.players {
+    display: flex;
+    flex-direction: column;
+  }
+.players_list {
+    display: flex;
+    flex-direction: column;
+    gap:.5em
+  }
+
+.player_container {
+  display: flex;
+  flex-direction: row;
+  background-color: #A8DADC;
+  color: black;
+  gap: 3em;
+  padding: 0.5em 4em;
+  border: 2px solid black;
+  border-radius: 15px;
+}
