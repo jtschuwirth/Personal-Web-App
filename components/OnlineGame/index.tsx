@@ -6,6 +6,7 @@ import {BiLike, BiDislike} from "react-icons/bi"
 interface Props {
   level:number;
   game:string;
+  setLastPrompt:any;
 }
 
 interface Phrase {
@@ -14,7 +15,7 @@ interface Phrase {
 }
 
 // eslint-disable-next-line react/display-name
-export const Game = forwardRef(({level, game}:Props, ref) => {
+export const Game = forwardRef(({level, game, setLastPrompt}:Props, ref) => {
   const [buffer, setBuffer] = useState<Phrase[]>([])
   const [phrase, setPhrase] = useState("");
   const [loading, setLoading] = useState(false)
@@ -22,12 +23,13 @@ export const Game = forwardRef(({level, game}:Props, ref) => {
   const [phraseLevel, setPhraseLevel] = useState(1)
 
   useImperativeHandle(ref, () => ({
-    handleNewTurn: () => handleNewTurn()
+    handleNewTurn: () => handleNewTurn(),
   }));
 
   async function handleNewTurn() {
     if (loading) return;
     setLoading(true)
+    setLastPrompt(phrase)
 
     if (opinion!=="none" && phrase!=="") {
       let opinion_response

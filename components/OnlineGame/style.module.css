@@ -5,6 +5,7 @@
     align-items: center;
     gap:1em;
     padding: 3em;
+    width: 100%;
 }
 
 .phrase_container {
@@ -12,9 +13,10 @@
     justify-content: center;
     align-items: center;
     background-color: #F1FAEE;
-    width: 350px;
-    height: 200px; 
-    padding: 2em;
+    width: 100%;
+    height: 300px; 
+    font-size: 46px;
+    padding: 1em;
     border-radius: 15px;
     border: 2px solid #1D3557;
 }

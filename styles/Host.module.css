@@ -1,0 +1,52 @@
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #DE4545;
+  }
+  
+  .main_content {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .middle_section {
+    display: flex;
+    flex-direction: column;
+    flex:2;
+    align-items: center;
+  }
+  .side_section {
+    display: flex;
+    flex-direction: column;
+    flex:1
+  }
+  
+  .input {
+    background-color: white;
+    border-radius: 15px;
+    padding: 0.5em 1em;
+    font-size: 16px;
+    width: 300px;
+    color:black
+  }
+  
+  .btn {
+    padding: .5em 3em;
+    background-color: #A8DADC;
+    color: black;
+    border-radius: 15px;
+  }
+  
+  
+  .select_name_container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+  }
+  

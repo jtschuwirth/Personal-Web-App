@@ -1,14 +1,13 @@
 import styles from "./style.module.css"
 import { useState, useEffect } from "react";
 import { Counter } from "../Counter"
-import { count } from "console";
 
 interface Props {
     socket:WebSocket|undefined;
 }
 
 export const Game = ({socket}:Props) => {
-    const [answer, setAsnwer] = useState(0)
+    const [answer, setAsnwer] = useState<number|null>(null)
     const [guess, setGuess] = useState(0)
     const [turn, setTurn] = useState(0)
 
@@ -18,14 +17,18 @@ export const Game = ({socket}:Props) => {
                 const data = JSON.parse(event.data)
                 if (data?.round_end) {
                   setTurn(0)
+                  setAsnwer(null)
+                  setGuess(0)
                 } 
             };
         }
       }, [socket]);
 
     function handleClick() {
-        socket?.send(JSON.stringify({action: "endturn", guess:guess, answer:answer}))
-        setTurn(1)
+        if (socket && socket.readyState===1) {
+            setTurn(1)
+            socket.send(JSON.stringify({action: "endturn", guess:guess, answer:answer||0}))
+        }
     }
 
 
@@ -36,8 +39,8 @@ export const Game = ({socket}:Props) => {
         <div className={styles.game_container}>
             {!turn?
             <div className={styles.choice}>
-                <button className={answer?styles.btn_active:styles.btn} onClick={() => setAsnwer(1)}>Done it</button>
-                <button className={!answer?styles.btn_active:styles.btn} onClick={() => setAsnwer(0)}>Never done it</button>
+                <button className={answer===1?styles.btn_active:styles.btn} onClick={() => setAsnwer(1)}>I have </button>
+                <button className={answer===0?styles.btn_active:styles.btn} onClick={() => setAsnwer(0)}>i have never</button>
             </div>:
             <div className={styles.choice}>
                 <span>Waiting Other Players</span>

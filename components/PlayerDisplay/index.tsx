@@ -5,24 +5,30 @@ interface Players {
     user_name:string;
     points:number;
     last_turn_points:number;
+    turn_status:string;
   }
 
 interface Props {
-    playing_players:Players[];
-    done_players:Players[]
+    players:Players[];
 }
 
-export const PlayerDisplay = ({playing_players, done_players}:Props) => {
+export const PlayerDisplay = ({players}:Props) => {
 
     return (
         <div className={styles.player_container}>
             <div className={styles.players_list}>
                 <span>Playing</span>
-                <span className={styles.players}>{playing_players.map((_) =><span key={_.id}>{_.user_name}: {_.points} (+{_.points-(_.last_turn_points||0)})</span>)}</span>
+                <span className={styles.players}>{players.filter((_) => _.turn_status==="playing")
+                                                         .sort((a,b) => { return b.points-a.points })
+                                                         .map((_) =><span key={_.id}>{_.user_name}: {_.points}</span>)
+                                                         }</span>
             </div>
             <div className={styles.players_list}>
                 <span>Done</span>
-                <span className={styles.players}>{done_players.map((_) =><span key={_.id}>{_.user_name}: {_.points}</span>)}</span>
+                <span className={styles.players}>{players.filter((_) => _.turn_status==="done")
+                                                         .sort((a,b) => { return b.points-a.points })
+                                                         .map((_) =><span key={_.id}>{_.user_name}: {_.points}</span>)
+                                                         }</span>
             </div>
         </div>
     );

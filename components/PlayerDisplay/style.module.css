@@ -13,8 +13,10 @@
   flex-direction: row;
   background-color: #A8DADC;
   color: black;
-  gap: 3em;
-  padding: 0.5em 4em;
+  gap: 5em;
+  padding: 0.5em 2em;
+  margin: 3em;
   border: 2px solid black;
   border-radius: 15px;
+  justify-content: center;
 }
