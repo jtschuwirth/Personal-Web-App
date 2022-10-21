@@ -57,7 +57,6 @@ const Host: NextPage = () => {
 
         } else if (data.turn_end) {
           data.turn_end.turn_status = "done"
-          data.turn_end.last_turn_points=players.find(element => element.id===data.turn_end.id)?.last_turn_points
           setPlayers((players) => {
             data.turn_end.last_turn_points=players.find(element => element.id===data.turn_end.id)?.last_turn_points
             return players.filter((_) => _.id!==data.turn_end.id)
