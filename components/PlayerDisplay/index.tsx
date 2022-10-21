@@ -15,6 +15,8 @@ interface Props {
 export const PlayerDisplay = ({players}:Props) => {
 
     return (
+        <div className={styles.standings}>
+        <span className={styles.title}>Standings</span>
         <div className={styles.player_container}>
             <div className={styles.players_list}>
                 <span className={styles.title}>Playing</span>
@@ -30,6 +32,7 @@ export const PlayerDisplay = ({players}:Props) => {
                                                          .map((_) =><span key={_.id}>{_.user_name}: {_.points}</span>)
                                                          }</span>
             </div>
+        </div>
         </div>
     );
   };

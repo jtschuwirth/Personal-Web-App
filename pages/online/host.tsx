@@ -94,12 +94,14 @@ const Host: NextPage = () => {
 
   return (
     <div className={styles.main}>
+      <div className={styles.main_title}>
+      <Title title="Never have i ever... ONLINE" socket={socket}/>
       <div className={styles.main_content}>
         <div className={styles.side_section}>
           <LastPrompt doneIt={doneIt} notDoneIt={notDoneIt} players={players} last_prompt={last_prompt}/>
         </div>
         <div className={styles.middle_section}>
-          <Title title="Never have i ever... ONLINE" socket={socket}/>
+
           <LevelSelector level={level} setLevel={setLevel} game="nuncanunca"/>
           <Game 
             level={level} 
@@ -112,7 +114,9 @@ const Host: NextPage = () => {
          <PlayerDisplay players={players}/>
         </div>
         </div>
+        </div>
       <Foot />
+      
     </div>
 
   )

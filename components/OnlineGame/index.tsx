@@ -23,14 +23,15 @@ export const Game = forwardRef(({level, game, setLastPrompt}:Props, ref) => {
   const [phraseLevel, setPhraseLevel] = useState(1)
 
   useImperativeHandle(ref, () => ({
-    handleNewTurn: () => handleNewTurn(),
+    handleNewTurn: () => handleNewTurn("round_end"),
   }));
 
-  async function handleNewTurn() {
+  async function handleNewTurn(action:string) {
     if (loading) return;
     setLoading(true)
-    setLastPrompt(phrase)
-
+    if (action === "round_end") {
+      setLastPrompt(phrase)
+    }
     if (opinion!=="none" && phrase!=="") {
       let opinion_response
       if (opinion === "like") {
@@ -110,7 +111,7 @@ export const Game = forwardRef(({level, game, setLastPrompt}:Props, ref) => {
       <div className={styles.phrase_container}>
         <span className={styles.phrase}>{phrase}</span>
       </div>
-      <button className={styles[`btn_${game}`]} onClick={() => handleNewTurn()}>{loading?"Loading":"Skip Prompt"}</button>
+      <button className={styles[`btn_${game}`]} onClick={() => handleNewTurn("skip")}>{loading?"Loading":"Skip Prompt"}</button>
     </div>
 
   );

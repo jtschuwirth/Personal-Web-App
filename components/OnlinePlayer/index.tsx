@@ -25,9 +25,9 @@ export const Game = ({socket}:Props) => {
       }, [socket]);
 
     function handleClick() {
-        if (socket && socket.readyState===1) {
+        if (socket && socket.readyState===1 && answer!==null) {
             setTurn(1)
-            socket.send(JSON.stringify({action: "endturn", guess:guess, answer:answer||0}))
+            socket.send(JSON.stringify({action: "endturn", guess:guess, answer:answer}))
         }
     }
 
@@ -37,18 +37,17 @@ export const Game = ({socket}:Props) => {
 
     return (
         <div className={styles.game_container}>
-            {!turn?
+            {!turn?<>
             <div className={styles.choice}>
                 <button className={answer===1?styles.btn_active:styles.btn} onClick={() => setAsnwer(1)}>I have </button>
                 <button className={answer===0?styles.btn_active:styles.btn} onClick={() => setAsnwer(0)}>i have never</button>
-            </div>:
+            </div>
+            <span className={styles.desc}>How many players do you think have done it?</span>
+            <Counter count={guess} setCount={setGuess}/>
+            </>:
             <div className={styles.choice}>
                 <span>Waiting Other Players</span>
             </div>}
-
-
-            <span className={styles.desc}>How many players do you think have done it?</span>
-            <Counter count={guess} setCount={setGuess}/>
             <button className={turn?styles.btn_active:styles.btn} onClick={() => handleClick()}>End Turn</button>
         </div>
 

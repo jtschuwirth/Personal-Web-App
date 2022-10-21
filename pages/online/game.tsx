@@ -28,7 +28,9 @@ const GamePage: NextPage = () => {
 
   function onSubmit(event:any) {
     event.preventDefault()
-    setName(event.target.name_input.value)
+    if (event.target.name_input.value.length<12 ) {
+      setName(event.target.name_input.value)
+    } else return;
   }
 
   if (name==="") {
