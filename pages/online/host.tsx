@@ -33,15 +33,32 @@ const Host: NextPage = () => {
   const [notDoneIt, setNotDoneIt] = useState(0)
   const [socket, setSocket] = useState<WebSocket>()
   const [last_prompt, setLastPrompt] = useState("");
+  const [room, setRoom] = useState("");
   const runs = useRef(0)
   const Ref = useRef({
     handleNewTurn: () => console.log("ref"),
   }) 
 
+  const normalCharacters =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  function generateRoom(length:number) {
+    var characterList = normalCharacters;
+    var result = "";
+    while (length > 0) {
+      // Pick random index from characterList
+      var index = Math.floor(Math.random() * characterList.length);
+      result += characterList[index];
+      length--;
+    }
+    return result;
+  }
   useEffect(() => {
     if (!runs.current) {
       Ref.current.handleNewTurn()
-      const newSocket = new WebSocket("wss://9s9l3p7u9a.execute-api.us-east-1.amazonaws.com/dev?name=host&host=1")
+      let new_room = generateRoom(4)
+      setRoom(new_room)
+      const newSocket = new WebSocket(`wss://2mgs44ly30.execute-api.us-east-1.amazonaws.com/production?name=host&host=1&room=${new_room}`)
       setSocket(newSocket)
       runs.current=1
 
@@ -96,6 +113,7 @@ const Host: NextPage = () => {
     <div className={styles.main}>
       <div className={styles.main_title}>
       <Title title="Never have i ever... ONLINE" socket={socket}/>
+      <span className={styles.room}>Room Id: {room}</span>
       <div className={styles.main_content}>
         <div className={styles.side_section}>
           <LastPrompt doneIt={doneIt} notDoneIt={notDoneIt} players={players} last_prompt={last_prompt}/>

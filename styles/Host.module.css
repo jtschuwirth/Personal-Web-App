@@ -58,4 +58,8 @@
     flex-direction: column;
     gap: 1em;
   }
+
+  .room {
+    font-size: 32px;
+  }
   

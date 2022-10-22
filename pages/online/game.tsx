@@ -7,6 +7,7 @@ import { Game } from "../../components/OnlinePlayer";
 
 const GamePage: NextPage = () => {
   const [name, setName] = useState("");
+  const [room, setRoom] = useState("")
   const [socket, setSocket] = useState<WebSocket>()
   const runs = useRef(0)
 
@@ -14,7 +15,7 @@ const GamePage: NextPage = () => {
 
   useEffect(() => {
     if (name!=="" && !runs.current) {
-      const newSocket = new WebSocket(`wss://9s9l3p7u9a.execute-api.us-east-1.amazonaws.com/dev?name=${name}`)
+      const newSocket = new WebSocket(`wss://2mgs44ly30.execute-api.us-east-1.amazonaws.com/production?name=${name}&room=${room}`)
       setSocket(newSocket)
       runs.current=1
     }
@@ -30,6 +31,7 @@ const GamePage: NextPage = () => {
     event.preventDefault()
     if (event.target.name_input.value.length<12 ) {
       setName(event.target.name_input.value)
+      setRoom(event.target.room_input.value.toUpperCase())
     } else return;
   }
 
@@ -40,6 +42,8 @@ const GamePage: NextPage = () => {
             <form onSubmit={onSubmit} className={styles.select_name_container}>
               <span className={styles.pick_name}>Choose a Name</span>
               <input className={styles.input} name="name_input"/>
+              <span className={styles.pick_name}>Enter the room code</span>
+              <input className={styles.input} name="room_input"/>
               <button className={styles.btn} type="submit">Join Game</button>
             </form>
 
