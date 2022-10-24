@@ -26,7 +26,7 @@ const GamePage: NextPage = () => {
         socket.close();
       }
     };
-  },[name, runs, setSocket, socket])
+  },[name, runs, setSocket, socket, room])
 
   function onSubmit(event:any) {
     event.preventDefault()
