@@ -49,6 +49,14 @@
     color: black;
     border-radius: 15px;
   }
+
+  .btn_start {
+    padding: .5em 3em;
+    background-color: #A8DADC;
+    color: black;
+    border-radius: 15px;
+    font-size: 32px;
+  }
   
   
   .select_name_container {
@@ -59,14 +67,15 @@
   }
 
   .room {
-    font-size: 32px;
+    font-size: 46px;
   }
   
 
   .start_game {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 0.5em;
+    align-items: center;
    }
 
    .standings {
@@ -86,4 +95,7 @@
     .btn:hover {
         opacity: 0.8;
     }
+    .btn_start:hover {
+      opacity: 0.8;
+  }
   }

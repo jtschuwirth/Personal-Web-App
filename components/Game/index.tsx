@@ -101,11 +101,13 @@ export const Game  = ({level, game}:Props) => {
         <div 
           className={opinion==="dislike"?styles[`like_container_active_${game}`]:styles[`like_container_${game}`]}
           onClick={() => handleDislike()}
-          ><BiDislike size={20}/></div>
+          ><BiDislike size={20}/>
+        </div>
         <div 
           className={opinion==="like"?styles[`like_container_active_${game}`]:styles[`like_container_${game}`]}
           onClick={() => handleLike()}
-          ><BiLike size={20}/></div>
+          ><BiLike size={20}/>
+        </div>
       </div>
       <div className={styles.phrase_container}>
         <span className={styles.phrase}>{phrase}</span>

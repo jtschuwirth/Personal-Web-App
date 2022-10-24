@@ -1,0 +1,115 @@
+.game_container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1em;
+    padding: 5em;
+}
+
+.phrase_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F1FAEE;
+    width: 350px;
+    height: 200px; 
+    padding: 2em;
+    border-radius: 15px;
+    border: 2px solid #1D3557;
+}
+
+
+.opinion_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1em;
+}
+
+.like_container_icebreakers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #1D3557;
+    padding: 0.5em 3em;
+    background-color: #A8DADC;
+    color: black;
+}
+
+.like_container_nuncanunca {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    padding: 0.5em 3em;
+    background-color: #C9D6EA;
+    color: black;
+}
+
+.like_container_active_icebreakers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #1D3557;
+    padding: 0.5em 3em;
+    background-color: #6839E6;
+    color: #F1FAEE;
+}
+
+.like_container_active_nuncanunca {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    padding: 0.5em 3em;
+    background-color: #663F46;
+    color: #F1FAEE;
+}
+
+
+
+.phrase {
+    text-align: center;
+    color: #1D3557
+}
+
+.btn_icebreakers {
+    border: solid 2px #1D3557;
+    background: #A8DADC;
+    color: #1D3557;
+    padding: 1em 2em;
+    width: 180px;
+}
+
+.btn_nuncanunca {
+    border: solid 2px black;
+    background: #C9D6EA;
+    color: #1D3557;
+    padding: 1em 2em;
+    width: 180px;
+}
+
+
+@media (max-width: 360px) {
+    .phrase_container  {
+        width: 300px;
+    }
+  }
+
+@media (hover: hover) {
+    .btn_icebreakers:hover {
+        background: #6839E6;
+        color: #F1FAEE;
+    }
+    .btn_nuncanunca:hover {
+        background: #663F46;
+        color: #F1FAEE;
+    }
+    .like_container_icebreakers:hover {
+        opacity: 0.6;
+    }
+    .like_container_nuncanunca:hover {
+        opacity: 0.6;
+    }
+  }

@@ -3,6 +3,7 @@
     flex-direction: column;
     font-size: 32px;
   }
+  
 .players_list {
     display: flex;
     flex-direction: column;

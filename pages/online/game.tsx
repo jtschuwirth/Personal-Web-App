@@ -6,7 +6,7 @@ import { Title } from '../../components/TitleContainer';
 import { Game } from "../../components/OnlinePlayer";
 
 const GamePage: NextPage = () => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState("")
   const [room, setRoom] = useState("")
   const [socket, setSocket] = useState<WebSocket>()
   const runs = useRef(0)
@@ -19,6 +19,7 @@ const GamePage: NextPage = () => {
       setSocket(newSocket)
       runs.current=1
     }
+
     window.onbeforeunload = function() {
       if (socket) {
         socket.onclose = function () {}; // disable onclose handler first

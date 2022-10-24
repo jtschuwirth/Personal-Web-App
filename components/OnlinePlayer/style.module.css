@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     gap:1em;
+    align-items: center;
 }
 
 .choice {
@@ -30,10 +31,29 @@
     width: 300px;
     text-align: center;
 }
+
+.phrase_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F1FAEE;
+    width: 350px;
+    height: 200px; 
+    padding: 2em;
+    border-radius: 15px;
+    border: 2px solid #1D3557;
+}
+
+.phrase {
+    text-align: center;
+    color: #1D3557
+}
   
   @media (hover: hover) {
     .btn:hover {
         opacity: 0.8;
     }
   }
+
+
   

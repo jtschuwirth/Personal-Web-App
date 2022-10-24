@@ -58,8 +58,10 @@ const Host: NextPage = () => {
       const newSocket = new WebSocket(`wss://2mgs44ly30.execute-api.us-east-1.amazonaws.com/production?name=host&host=1&room=${new_room}`)
       setSocket(newSocket)
       runs.current=1
+    }
 
-      newSocket.onmessage = (event) => {
+    if (socket) {
+      socket.onmessage = (event) => {
         const data = JSON.parse(event.data)
 
         if (data.new_connection) {
@@ -101,14 +103,15 @@ const Host: NextPage = () => {
       };
   
       window.onbeforeunload = function() {
-        newSocket.onclose = function () {}; // disable onclose handler first
-        newSocket.close();
+        socket.onclose = function () {}; // disable onclose handler first
+        socket.close();
       };
+      
     }
-  }, [runs]);
+  }, [runs, socket, prompt]);
 
   function handleStartGame() {
-    if (socket) {
+    if (socket && socket.readyState===1) {
       socket.send(JSON.stringify({action: "startgame"}))
       setStarted(1)
     }
@@ -120,7 +123,7 @@ const Host: NextPage = () => {
         <Title title="Never have i ever... ONLINE" socket={socket}/>
         <div className={styles.start_game}>
         <span className={styles.room}>Room Id: {room}</span>
-        <button className={styles.btn} onClick={() => handleStartGame()}>Start Game</button>
+        <button className={styles.btn_start} onClick={() => handleStartGame()}>Start Game</button>
         <PlayerDisplay players={players}/>
         </div>
         <Foot />
