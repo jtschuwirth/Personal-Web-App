@@ -136,6 +136,7 @@ const Host: NextPage = () => {
     <div className={styles.main}>
       <div className={styles.main_title}>
       <Title title="Never have i ever... ONLINE" socket={socket}/>
+      <span className={styles.room}>Room Id: {room}</span>
       <div className={styles.main_content}>
         <div className={styles.side_section}>
           <LastPrompt doneIt={doneIt} notDoneIt={notDoneIt} players={players} last_prompt={last_prompt}/>

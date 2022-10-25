@@ -47,8 +47,6 @@ const GamePage: NextPage = () => {
               <input className={styles.input} name="room_input"/>
               <button className={styles.btn} type="submit">Join Game</button>
             </form>
-
-  
         <Foot />
       </div>
     )
