@@ -19,7 +19,7 @@ export const PlayerDisplay = ({players}:Props) => {
             <div className={styles.players_list}>
                 <span className={styles.title}>Playing</span>
                 <span className={styles.players}>{players.sort((a,b) => { return b.points-a.points })
-                                                         .map((_) =><span key={_.id} className={styles[_.turn_status]}>{_.user_name}: {_.points}</span>)
+                                                         .map((_) =><span key={_.id} className={styles[_.turn_status]}>{_.user_name}: {_.points} (+{_.points-(_.last_turn_points||0)})</span>)
                                                          }</span>
             </div>
         </div>

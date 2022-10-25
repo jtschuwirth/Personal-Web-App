@@ -144,7 +144,7 @@ const Host: NextPage = () => {
       <span className={styles.room}>Room Id: {room}</span>
       <div className={styles.main_content}>
         <div className={styles.side_section}>
-          <LastPrompt doneIt={doneIt} notDoneIt={notDoneIt} players={players} last_prompt={last_prompt}/>
+          <LastPrompt doneIt={doneIt} notDoneIt={notDoneIt} last_prompt={last_prompt}/>
         </div>
 
         <div className={styles.middle_section}>

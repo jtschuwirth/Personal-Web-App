@@ -11,24 +11,13 @@ interface Players {
 interface Props {
     doneIt:number;
     notDoneIt:number;
-    players:Players[];
     last_prompt:string;
 }
 
-export const LastPrompt = ({doneIt, notDoneIt, players, last_prompt}:Props) => {
+export const LastPrompt = ({doneIt, notDoneIt, last_prompt}:Props) => {
 
     return (
         <div className={styles.last_prompt}>
-          <span className={styles.title}>Last Round Points</span>
-          <div className={styles.player_container}>
-                <div className={styles.players_list}>
-                    <span className={styles.title}>Last turn points</span>
-                    <span className={styles.players}>{players.sort((a,b) => a.user_name.localeCompare(b.user_name))
-                                                         .map((_) =><span key={_.id}>{_.user_name} (+{_.points-(_.last_turn_points||0)})</span>)
-                                                         }</span>
-
-                </div>
-          </div>
           <span className={styles.title}>Last Round Prompt and Results</span>
           <div className={styles.player_container}>
             <div className={styles.players_list}>
