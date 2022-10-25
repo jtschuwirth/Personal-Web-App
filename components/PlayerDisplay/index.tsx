@@ -18,14 +18,8 @@ export const PlayerDisplay = ({players}:Props) => {
         <div className={styles.player_container}>
             <div className={styles.players_list}>
                 <span className={styles.title}>Playing</span>
-                <span className={styles.players}>{players.filter((_) => _.turn_status==="playing")
-                                                         .sort((a,b) => { return b.points-a.points })
-                                                         .map((_) =><span key={_.id}>{_.user_name}: {_.points}</span>)
-                                                         }</span>
-                <span className={styles.title}>Done</span>
-                <span className={styles.players}>{players.filter((_) => _.turn_status==="done")
-                                                         .sort((a,b) => { return b.points-a.points })
-                                                         .map((_) =><span key={_.id}>{_.user_name}: {_.points}</span>)
+                <span className={styles.players}>{players.sort((a,b) => { return b.points-a.points })
+                                                         .map((_) =><span key={_.id} className={styles[_.turn_status]}>{_.user_name}: {_.points}</span>)
                                                          }</span>
             </div>
         </div>

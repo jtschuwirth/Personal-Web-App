@@ -36,3 +36,11 @@
   font-size: 32px;
 }
 
+.playing {
+  color:black;
+}
+
+.done {
+  color: grey;
+}
+

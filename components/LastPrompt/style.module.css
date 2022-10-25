@@ -42,12 +42,14 @@
     gap:.5em;
     flex:1;
     text-align: center;
+    align-items: center;
   }
 
 .player_container {
   display: flex;
   flex-direction: row;
   background-color: #A8DADC;
+  align-items: center;
   color: black;
   width: 100%;
   padding: 0.5em 1em;
@@ -57,9 +59,11 @@
 
 .title {
   font-size: 32px;
+  text-align: center;
 }
 
 .prompt {
   text-align: center;
   width: 300px;
+  color: black;
 }
