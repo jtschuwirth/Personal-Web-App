@@ -102,7 +102,7 @@ export const Game = ({socket}:Props) => {
                 <div className={answer===0?styles.btn_active:styles.btn} onClick={() => setAsnwer(0)}>i have never</div>
             </div>
             <span className={styles.desc}>How many players do you think have done it?</span>
-            <Counter count={guess} setCount={setGuess}/>
+            <Counter count={guess} setCount={setGuess} max={players.length||100}/>
             </>:
             <>
             {!opinion?<Opinion phrase={prompt} level={level} setOpinion={setOpinion}/>:null}

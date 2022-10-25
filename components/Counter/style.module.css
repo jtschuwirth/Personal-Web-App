@@ -1,9 +1,10 @@
 .counter {
     display: flex;
     justify-content: center;
-    gap: 0.5em;
     align-items: center;
-    font-size: 46px
+    gap: 0.5em;
+    font-size: 46px;
+    width: 300px;
 }
 
 .counter_display {
@@ -11,10 +12,11 @@
     justify-content: center;
     align-items: center;
     padding: 0px 30px;
+    width: 100px;
     background-color: #A8DADC;
     border: 2px solid black;
     color: black;
-    border-radius: 15px;
+    border-radius: 5px;
 
 }
 
@@ -24,9 +26,17 @@
     align-items: center;
     width: 50px;
     height: 50px;
+    font-size: 24px;
     background-color: #A8DADC;
     border: 2px solid black;
     color: black;
     border-radius: 15px;
 
+}
+
+@media (hover: hover) {
+    .counter_btn:hover {
+        background-color: #6839E6; 
+        color:white;  
+    }
 }
