@@ -93,10 +93,8 @@
   }
 
   @media (hover: hover) {
-    .btn:hover {
-        opacity: 0.8;
-    }
     .btn_start:hover {
-      opacity: 0.8;
+      background-color: #6839E6; 
+      color:white;   
   }
   }

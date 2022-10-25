@@ -43,9 +43,15 @@
 
 @media (hover: hover) {
     .btn_icebreakers:hover {
-        opacity: 0.6;
+        translate: 0px -2px;
+    }
+    .btn_selected_icebreakers:hover {
+        translate: 0px -2px;
     }
     .btn_nuncanunca:hover {
-        opacity: 0.6;
+        translate: 0px -2px;
+    }
+    .btn_selected_nuncanunca:hover {
+        translate: 0px -2px;
     }
   }
