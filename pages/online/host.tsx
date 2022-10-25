@@ -8,7 +8,6 @@ import { Title } from '../../components/TitleContainer';
 import { PlayerDisplay } from "../../components/PlayerDisplay"
 import { LastPrompt } from "../../components/LastPrompt"
 
-
 interface Players {
   id: string;
   user_name:string;
@@ -35,6 +34,7 @@ const Host: NextPage = () => {
   const [last_prompt, setLastPrompt] = useState("");
   const [room, setRoom] = useState("");
   const [started, setStarted] = useState(0);
+  const [level, setLevel] = useState(1)
   const runs = useRef(0)
 
   const normalCharacters =
@@ -117,6 +117,12 @@ const Host: NextPage = () => {
     }
   }
 
+  function sendChangeLevel(level:number) {
+    if (socket && socket.readyState===1) {
+      socket.send(JSON.stringify({action: "changelevel", level: level}))
+    }
+  }
+
   if (!started) {
     return (
       <div className={styles.main}>
@@ -131,7 +137,6 @@ const Host: NextPage = () => {
     )
   }
 
-
   return (
     <div className={styles.main}>
       <div className={styles.main_title}>
@@ -142,7 +147,10 @@ const Host: NextPage = () => {
           <LastPrompt doneIt={doneIt} notDoneIt={notDoneIt} players={players} last_prompt={last_prompt}/>
         </div>
 
-        <div className={styles.middle_section}><Game prompt={prompt} /></div>
+        <div className={styles.middle_section}>
+          <LevelSelector level={level} setLevel={setLevel} game={"icebreakers"} sendChangeLevel={sendChangeLevel}/>
+          <Game prompt={prompt} />
+        </div>
         
         <div className={styles.side_section}>
         <div className={styles.standings}>
