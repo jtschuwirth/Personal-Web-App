@@ -112,7 +112,7 @@ export const Game = ({socket}:Props) => {
             </>}
             {!turn?<div className={styles.btn_turn} onClick={() => handleClick()}>End Turn</div>:null}
             {show_last_turn?<div className={styles.btn_turn} onClick={() => handleShow()}>show last turn data</div>:null}
-            {show_last_turn?<LastPrompt doneIt={doneIt} notDoneIt={notDoneIt} players={players} last_prompt={last_prompt}/>:null}
+            {show_last_turn?<LastPrompt doneIt={doneIt} notDoneIt={notDoneIt} last_prompt={last_prompt}/>:null}
         </div>
 
     );
