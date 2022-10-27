@@ -7,9 +7,14 @@ const Home: NextPage = () => {
   return (
     <div className={styles.main}>
       <div className={styles.main_content}>
-      <Link href="/online" >
+      <Link href="/nuncanuncaparty" >
         <div className={styles.game_container}>
           <span className={styles.game_title}>Never have i ever Party Mode!</span>
+        </div>
+      </Link>
+      <Link href="/peoplesortparty" >
+        <div className={styles.game_container}>
+          <span className={styles.game_title}>People Sort Party Mode! (BETA)</span>
         </div>
       </Link>
       <Link href="/wnrs" >

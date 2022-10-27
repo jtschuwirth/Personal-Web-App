@@ -1,0 +1,16 @@
+.phrase_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F1FAEE;
+    width: 100%;
+    font-size: 46px;
+    padding: 1em;
+    border-radius: 15px;
+    border: 2px solid #1D3557;
+}
+
+.phrase {
+    text-align: center;
+    color: #1D3557
+}

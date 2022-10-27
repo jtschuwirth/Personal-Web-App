@@ -1,12 +1,12 @@
 import type { NextPage } from 'next'
 import { useState, useEffect, useRef } from "react";
 import styles from '../../styles/Host.module.css'
-import { Game } from '../../components/OnlineGame'
-import { LevelSelector } from "../../components/LevelSelector"
+import { PromptDisplay } from '../../components/PromptDisplayPeopleSort';
 import { Foot } from "../../components/Foot"
 import { Title } from '../../components/TitleContainer';
 import { PlayerDisplay } from "../../components/PlayerDisplay"
-import { LastPrompt } from "../../components/LastPrompt"
+import { useSocket } from "../../hooks/useSocket"
+import { LastPrompt } from "../../components/LastPromptPeopleSort"
 
 interface Players {
   id: string;
@@ -26,16 +26,14 @@ interface RoundEndData {
 }
 
 const Host: NextPage = () => {
-  const [prompt, setPrompt] = useState("");
+  const [prompt, setPrompt] = useState({max:"",min:""});
   const [players, setPlayers] = useState<Players[]>([])
-  const [doneIt, setDoneIt] = useState(0)
-  const [notDoneIt, setNotDoneIt] = useState(0)
-  const [socket, setSocket] = useState<WebSocket>()
-  const [last_prompt, setLastPrompt] = useState("");
-  const [room, setRoom] = useState("");
+  const [last_prompt, setLastPrompt] = useState({max:"",min:""});
+  const [room, setRoom] = useState<string|null>(null);
   const [started, setStarted] = useState(0);
-  const [level, setLevel] = useState(1)
   const runs = useRef(0)
+
+  const socket = useSocket(room?`wss://cwap247wcg.execute-api.us-east-1.amazonaws.com/production?name=host&host=1&room=${room}`:null)
 
   const normalCharacters =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -51,12 +49,11 @@ const Host: NextPage = () => {
     }
     return result;
   }
+  
   useEffect(() => {
     if (!runs.current) {
       let new_room = generateRoom(4)
       setRoom(new_room)
-      const newSocket = new WebSocket(`wss://2mgs44ly30.execute-api.us-east-1.amazonaws.com/production?name=host&host=1&room=${new_room}`)
-      setSocket(newSocket)
       runs.current=1
     }
 
@@ -79,13 +76,10 @@ const Host: NextPage = () => {
           })
           setPlayers((players) => [...players, data.turn_end])
 
-
         } else if (data.round_end) {
           setPlayers([])
-          setDoneIt(0)
-          setNotDoneIt(0)
           setLastPrompt(prompt)
-          setPrompt(data.new_prompt.phrase)
+          setPrompt(data.new_prompt)
           data.round_end.map((_:RoundEndData) => setPlayers((players) => [...players, {
             id:_.connection_id, 
             user_name:_.user_name, 
@@ -93,12 +87,9 @@ const Host: NextPage = () => {
             last_turn_points:_.last_turn_points, 
             turn_status: "playing"
           }]))
-          data.round_end.map((_:RoundEndData) => {
-            if (parseInt(_.answer)===1) { setDoneIt((answer) => answer+1)} 
-            else { setNotDoneIt((answer) => answer+1) }
-          })
+
         } else if (data.starting_game) {
-          setPrompt(data.starting_game.phrase)
+          setPrompt(data.starting_game)
         }
       };
   
@@ -117,16 +108,10 @@ const Host: NextPage = () => {
     }
   }
 
-  function sendChangeLevel(level:number) {
-    if (socket && socket.readyState===1) {
-      socket.send(JSON.stringify({action: "changelevel", level: level}))
-    }
-  }
-
   if (!started) {
     return (
       <div className={styles.main}>
-        <Title title="Never have i ever... ONLINE" socket={socket}/>
+        <Title title="People Sort Party Mode" socket={socket}/>
         <div className={styles.start_game}>
         <span className={styles.room}>Room Id: {room}</span>
         <button className={styles.btn_start} onClick={() => handleStartGame()}>Start Game</button>
@@ -140,16 +125,15 @@ const Host: NextPage = () => {
   return (
     <div className={styles.main}>
       <div className={styles.main_title}>
-      <Title title="Never have i ever... ONLINE" socket={socket}/>
+      <Title title="People Sort Party Mode" socket={socket}/>
       <span className={styles.room}>Room Id: {room}</span>
       <div className={styles.main_content}>
         <div className={styles.side_section}>
-          <LastPrompt doneIt={doneIt} notDoneIt={notDoneIt} last_prompt={last_prompt}/>
+        <LastPrompt prompt={last_prompt} />
         </div>
 
         <div className={styles.middle_section}>
-          <LevelSelector level={level} setLevel={setLevel} game={"icebreakers"} sendChangeLevel={sendChangeLevel}/>
-          <Game prompt={prompt} />
+          <PromptDisplay prompt={prompt} />
         </div>
         
         <div className={styles.side_section}>

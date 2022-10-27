@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import { useState } from "react";
 import styles from '../styles/WNRS.module.css'
-import { Game } from '../components/Game'
+import { Game } from '../components/GameStandard'
 import { LevelSelector } from "../components/LevelSelector"
 import { Foot } from "../components/Foot"
 import { Title } from '../components/TitleContainer';

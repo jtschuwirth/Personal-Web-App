@@ -2,16 +2,14 @@ import styles from "./style.module.css"
 
 interface Props {
   prompt:string;
+  height:string;
 }
 
-export const Game = ({prompt}:Props) => {
+export const PromptDisplay = ({prompt, height}:Props) => {
 
   return (
-    <div className={styles.game_container}>
-      <div className={styles.phrase_container}>
+      <div className={styles.phrase_container} style={{height:height}}>
         <span className={styles.phrase}>{prompt}</span>
       </div>
-    </div>
-
   );
 };
