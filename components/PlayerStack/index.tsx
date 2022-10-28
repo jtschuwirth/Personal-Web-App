@@ -17,7 +17,7 @@ interface Props {
     prompt: {max:string, min:string}
 }
 
-const Player = ({ user_name, index, key }:{user_name:string, index:number, key:string}) => {
+const Player = ({ user_name, index, key, distance }:{user_name:string, index:number, key:string, distance?:number}) => {
     return (
       <Draggable draggableId={user_name} index={index} key={user_name} >
         {(provided:any) => (
@@ -28,7 +28,7 @@ const Player = ({ user_name, index, key }:{user_name:string, index:number, key:s
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
             >
-                {user_name}
+                {distance?<div>{distance}. {user_name}</div>:user_name}
             </div>
         )}
       </Draggable>
@@ -36,7 +36,7 @@ const Player = ({ user_name, index, key }:{user_name:string, index:number, key:s
   }
 
 const PlayerList = memo(function PlayerList({ players }:any) {
-    return players.map((_:Player, index:number) => <Player user_name={_.user_name} index={index} key={_.user_name}/>)
+    return players.map((_:Player, index:number) => <Player user_name={_.user_name} distance={_.distance} index={index} key={_.user_name}/>)
 })
 
 

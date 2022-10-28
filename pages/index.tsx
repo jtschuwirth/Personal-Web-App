@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       </Link>
       <Link href="/peoplesortparty" >
         <div className={styles.game_container}>
-          <span className={styles.game_title}>People Sort Party Mode! (BETA)</span>
+          <span className={styles.game_title}>People sort Party Mode!</span>
         </div>
       </Link>
       <Link href="/wnrs" >

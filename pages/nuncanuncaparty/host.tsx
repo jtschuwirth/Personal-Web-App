@@ -126,7 +126,7 @@ const Host: NextPage = () => {
   if (!started) {
     return (
       <div className={styles.main}>
-        <Title title="Never have i ever... ONLINE" socket={socket}/>
+        <Title title="Never have i ever Party Mode" socket={socket}/>
         <div className={styles.start_game}>
         <span className={styles.room}>Room Id: {room}</span>
         <button className={styles.btn_start} onClick={() => handleStartGame()}>Start Game</button>
@@ -140,7 +140,7 @@ const Host: NextPage = () => {
   return (
     <div className={styles.main}>
       <div className={styles.main_title}>
-      <Title title="Never have i ever... ONLINE" socket={socket}/>
+      <Title title="Never have i ever Party Mode" socket={socket}/>
       <span className={styles.room}>Room Id: {room}</span>
       <div className={styles.main_content}>
         <div className={styles.side_section}>

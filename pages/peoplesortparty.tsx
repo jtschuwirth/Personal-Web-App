@@ -9,7 +9,7 @@ const NuncaNunca: NextPage = () => {
 
   return (
     <div className={styles.main}>
-        <Title title="People Sort (BETA)" />
+        <Title title="People sort Party Mode" />
         <div className={styles.buttons}>
             <button className={styles.btn} onClick={() => router.push("/peoplesortparty/host")}>HOST</button>
             <button className={styles.btn} onClick={() => router.push("/peoplesortparty/game")}>PLAY</button>

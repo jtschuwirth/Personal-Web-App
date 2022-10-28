@@ -33,7 +33,7 @@ const GamePage: NextPage = () => {
   if (name==="") {
     return (
       <div className={styles.main}>
-          <Title title="Never have i ever... ONLINE" socket={socket}/>
+          <Title title="Never have i ever Party Mode" socket={socket}/>
             <form onSubmit={onSubmit} className={styles.select_name_container}>
               <span className={styles.pick_name}>Choose a Name</span>
               <input className={styles.input} name="name_input"/>
@@ -47,7 +47,7 @@ const GamePage: NextPage = () => {
   } else {
     return (
       <div className={styles.main}>
-          <Title title="Never have i ever... ONLINE" socket={socket} />
+          <Title title="Never have i ever Party Mode" socket={socket} />
           <Game socket={socket}/>
         <Foot />
       </div>

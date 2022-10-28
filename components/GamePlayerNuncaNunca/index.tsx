@@ -25,6 +25,12 @@ interface Players {
     answer:string;
     guess:string;
   }
+  
+  interface StartGameData {
+    connection_id:string;
+    user_name:string;
+    points:number;
+  }
 
 export const Game = ({socket}:Props) => {
     const [answer, setAsnwer] = useState<number|null>(null)
@@ -67,8 +73,16 @@ export const Game = ({socket}:Props) => {
                     })
                 } else if (data.starting_game) {
                     setTurn(0)
+                    setPlayers([])
                     setPrompt(data.starting_game.phrase)
                     setLevel(data.starting_game.lvl)
+                    data.players.map((_:StartGameData) => setPlayers((players) => [...players, {
+                        id:_.connection_id, 
+                        user_name:_.user_name, 
+                        points:_.points, 
+                        last_turn_points:0, 
+                        turn_status: "playing"
+                      }]))
                     setOpinion(0)
                 }
             };
