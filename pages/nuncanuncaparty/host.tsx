@@ -144,12 +144,15 @@ const Host: NextPage = () => {
       <span className={styles.room}>Room Id: {room}</span>
       <div className={styles.main_content}>
         <div className={styles.side_section}>
+        <div className={styles.standings}>
+        <span className={styles.title}>Last Round Prompt</span>
           <LastPrompt doneIt={doneIt} notDoneIt={notDoneIt} last_prompt={last_prompt}/>
+          </div>
         </div>
 
         <div className={styles.middle_section}>
           <LevelSelector level={level} setLevel={setLevel} game={"icebreakers"} sendChangeLevel={sendChangeLevel}/>
-          <PromptDisplay prompt={prompt} height={"300px"}/>
+          <PromptDisplay prompt={prompt} location="host"/>
         </div>
         
         <div className={styles.side_section}>

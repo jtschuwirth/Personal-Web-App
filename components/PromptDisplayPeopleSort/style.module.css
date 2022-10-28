@@ -1,6 +1,6 @@
 .phrase_container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
     align-items: center;
     background-color: #F1FAEE;

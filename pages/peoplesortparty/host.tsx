@@ -6,7 +6,7 @@ import { Foot } from "../../components/Foot"
 import { Title } from '../../components/TitleContainer';
 import { PlayerDisplay } from "../../components/PlayerDisplay"
 import { useSocket } from "../../hooks/useSocket"
-import { LastPrompt } from "../../components/LastPromptPeopleSort"
+import { PlayerStack } from "../../components/PlayerStack"
 
 interface Players {
   id: string;
@@ -16,7 +16,7 @@ interface Players {
   turn_status:string;
 }
 
-interface RoundEndData {
+interface RoundEndPlayers {
   connection_id:string;
   user_name:string;
   points:number;
@@ -25,12 +25,18 @@ interface RoundEndData {
   guess:string;
 }
 
+interface Last_Round_Order {
+  user_name:string;
+  distance:number;
+}
+
 const Host: NextPage = () => {
   const [prompt, setPrompt] = useState({max:"",min:""});
   const [players, setPlayers] = useState<Players[]>([])
   const [last_prompt, setLastPrompt] = useState({max:"",min:""});
   const [room, setRoom] = useState<string|null>(null);
   const [started, setStarted] = useState(0);
+  const [last_round_order, setLastRoundOrder] = useState<Last_Round_Order[]>([])
   const runs = useRef(0)
 
   const socket = useSocket(room?`wss://cwap247wcg.execute-api.us-east-1.amazonaws.com/production?name=host&host=1&room=${room}`:null)
@@ -78,14 +84,20 @@ const Host: NextPage = () => {
 
         } else if (data.round_end) {
           setPlayers([])
+          setLastRoundOrder([])
           setLastPrompt(prompt)
           setPrompt(data.new_prompt)
-          data.round_end.map((_:RoundEndData) => setPlayers((players) => [...players, {
+          data.round_end.map((_:RoundEndPlayers) => setPlayers((players) => [...players, {
             id:_.connection_id, 
             user_name:_.user_name, 
             points:_.points, 
             last_turn_points:_.last_turn_points, 
             turn_status: "playing"
+          }]))
+          //Agregar un sort para que aparescan segun distancia
+          data.correct_order.map((_:Last_Round_Order) => setLastRoundOrder((players) => [...players, {
+            user_name:_.user_name,
+            distance: _.distance
           }]))
 
         } else if (data.starting_game) {
@@ -129,7 +141,10 @@ const Host: NextPage = () => {
       <span className={styles.room}>Room Id: {room}</span>
       <div className={styles.main_content}>
         <div className={styles.side_section}>
-        <LastPrompt prompt={last_prompt} />
+        <div className={styles.standings}>
+          <span className={styles.title}>Correct Order</span>
+          <PlayerStack players={last_round_order} setPlayers={setLastRoundOrder} prompt={last_prompt}/>
+          </div>
         </div>
 
         <div className={styles.middle_section}>

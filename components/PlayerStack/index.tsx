@@ -3,16 +3,18 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { memo } from "react"
 
 interface Player {
-    id: string;
+    id?: string;
     user_name:string;
-    points:number;
-    last_turn_points:number;
-    turn_status:string;
+    distance?:number;
+    points?:number;
+    last_turn_points?:number;
+    turn_status?:string;
   }
 
 interface Props {
     players:Player[]
     setPlayers:any;
+    prompt: {max:string, min:string}
 }
 
 const Player = ({ user_name, index, key }:{user_name:string, index:number, key:string}) => {
@@ -38,7 +40,7 @@ const PlayerList = memo(function PlayerList({ players }:any) {
 })
 
 
-export const PlayerStack = ({players, setPlayers}:Props) => {
+export const PlayerStack = ({players, setPlayers, prompt}:Props) => {
 
     const reorder = (list:any, startIndex:any, endIndex:any) => {
         const result = Array.from(list);
@@ -65,7 +67,9 @@ export const PlayerStack = ({players, setPlayers}:Props) => {
             <Droppable droppableId="list">
                 {(provided:any) => (
                 <div ref={provided.innerRef} {...provided.droppableProps} className={styles.stack}>
+                    <div className={styles.prompt}>{prompt.max}</div>
                     <PlayerList players={players} />
+                    <div className={styles.prompt}>{prompt.min}</div>
                     {provided.placeholder}
                 </div>
                 )}

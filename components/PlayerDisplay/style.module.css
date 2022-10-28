@@ -4,37 +4,18 @@
     font-size: 32px;
   }
   
-.players_list {
-    display: flex;
-    flex-direction: column;
-    gap:.5em;
-    flex:1;
-    text-align: center;
-    min-height: 150px;
-  }
-
 .player_container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap:.5em;
   background-color: #A8DADC;
   color: black;
+  text-align: center;
   width: 100%;
+  min-height: 300px;
   padding: 0.5em 1em;
   border: 2px solid black;
   border-radius: 15px;
-}
-
-.standings {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  align-items: center;
-  font-size: 24px;
-  margin:1em;
-}
-
-.title {
-  font-size: 32px;
 }
 
 .playing {

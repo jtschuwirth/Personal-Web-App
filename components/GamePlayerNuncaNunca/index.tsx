@@ -94,7 +94,7 @@ export const Game = ({socket}:Props) => {
 
     return (
         <div className={styles.game_container}>
-            <PromptDisplay prompt={prompt} height={"200px"}/>
+            <PromptDisplay prompt={prompt} location={"mobile"}/>
             {!turn?<>
             <div className={styles.choice}>
                 <div className={answer===1?styles.btn_active:styles.btn} onClick={() => setAsnwer(1)}>I have </div>
