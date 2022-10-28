@@ -7,6 +7,7 @@ import { Foot } from "../../components/Foot"
 import { Title } from '../../components/TitleContainer';
 import { PlayerDisplay } from "../../components/PlayerDisplay"
 import { LastPrompt } from "../../components/LastPromptNuncaNunca"
+import { useSocket } from "../../hooks/useSocket"
 
 interface Players {
   id: string;
@@ -30,12 +31,13 @@ const Host: NextPage = () => {
   const [players, setPlayers] = useState<Players[]>([])
   const [doneIt, setDoneIt] = useState(0)
   const [notDoneIt, setNotDoneIt] = useState(0)
-  const [socket, setSocket] = useState<WebSocket>()
   const [last_prompt, setLastPrompt] = useState("");
   const [room, setRoom] = useState("");
   const [started, setStarted] = useState(0);
   const [level, setLevel] = useState(1)
   const runs = useRef(0)
+
+  const socket = useSocket(room?`wss://2mgs44ly30.execute-api.us-east-1.amazonaws.com/production?name=host&host=1&room=${room}`:null)
 
   const normalCharacters =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -51,12 +53,12 @@ const Host: NextPage = () => {
     }
     return result;
   }
+
+
   useEffect(() => {
     if (!runs.current) {
       let new_room = generateRoom(4)
       setRoom(new_room)
-      const newSocket = new WebSocket(`wss://2mgs44ly30.execute-api.us-east-1.amazonaws.com/production?name=host&host=1&room=${new_room}`)
-      setSocket(newSocket)
       runs.current=1
     }
 

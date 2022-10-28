@@ -1,13 +1,5 @@
 import styles from "./style.module.css"
 
-interface Players {
-    id: string;
-    user_name:string;
-    points:number;
-    last_turn_points:number;
-    turn_status:string;
-  }
-
 interface Props {
     doneIt:number;
     notDoneIt:number;

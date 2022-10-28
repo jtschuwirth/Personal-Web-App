@@ -1,5 +1,4 @@
 import {BiLike, BiDislike} from "react-icons/bi"
-import { useState } from "react";
 import axios from "axios"
 import styles from "./style.module.css"
 
