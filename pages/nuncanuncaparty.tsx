@@ -11,8 +11,8 @@ const NuncaNunca: NextPage = () => {
     <div className={styles.main}>
         <Title title="Never have i ever Party Mode" />
         <div className={styles.buttons}>
-            <button className={styles.btn} onClick={() => router.push("/nuncanuncaparty/host")}>HOST</button>
-            <button className={styles.btn} onClick={() => router.push("/nuncanuncaparty/game")}>PLAY</button>
+          <button className={styles.btn} onClick={() => router.push("/nuncanuncaparty/host")}>HOST</button>
+          <button className={styles.btn} onClick={() => router.push("/nuncanuncaparty/game")}>PLAY</button>
         </div>
       <Foot />
     </div>

@@ -33,11 +33,17 @@ const GamePage: NextPage = () => {
     return (
       <div className={styles.main}>
           <Title title="People Sort Party Mode" socket={socket}/>
-            <form onSubmit={onSubmit} className={styles.select_name_container}>
-              <span className={styles.pick_name}>Choose a Name</span>
-              <input className={styles.input} name="name_input"/>
-              <span className={styles.pick_name}>Enter the room code</span>
-              <input className={styles.input} name="room_input"/>
+          <form onSubmit={onSubmit} className={styles.select_name_container}>
+              <div className={styles.inputs_container}>
+              <div className={styles.input_container}>
+                <input className={styles.input} name="name_input" type="text" required/>
+                <label className={styles.input_label}>Name</label>
+              </div>
+              <div className={styles.input_container}>
+                <input className={styles.input} name="room_input" type="text" required/>
+                <label className={styles.input_label}>Room Code</label>
+              </div>
+              </div>
               <button className={styles.btn} type="submit">Join Game</button>
             </form>
         <Foot />
