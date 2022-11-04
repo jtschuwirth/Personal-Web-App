@@ -18,7 +18,7 @@ const WNRS: NextPage = () => {
         <Title title="We're not really strangers" />
         <LevelSelector level={level} setLevel={setLevel} game="icebreakers"/>
         <div className={styles.game_container}>
-          <LikeDislikeComponent handle_like={() => setOpinion("like")} handle_dislike={() => setOpinion("dislike")}/>
+          <LikeDislikeComponent handle_like={() => setOpinion("like")} handle_dislike={() => setOpinion("dislike")} opinion={opinion} setOpinion={setOpinion}/>
           <Game 
             level={level} 
             game="icebreakers"

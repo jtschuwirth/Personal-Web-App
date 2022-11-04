@@ -1,15 +1,16 @@
 import {BiLike, BiDislike} from "react-icons/bi"
 import styles from "./style.module.css"
-import { useState } from "react"
+import { Dispatch, SetStateAction } from "react"
 
 interface Props {
     handle_like: Function;
     handle_dislike: Function
+    opinion:string;
+    setOpinion:Dispatch<SetStateAction<string>>;
 }
 
-export const LikeDislikeComponent = ({handle_like, handle_dislike}:Props) => {
-  const [opinion, setOpinion] = useState("")
-  
+export const LikeDislikeComponent = ({handle_like, handle_dislike, opinion, setOpinion}:Props) => {
+
   function handleClick(value:string) {
     if (value === "like" && opinion!=="like") {
       handle_like()

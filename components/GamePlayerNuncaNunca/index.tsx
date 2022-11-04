@@ -1,9 +1,10 @@
 import styles from "./style.module.css"
 import { useState, useEffect } from "react";
 import { Counter } from "../Counter"
-import { Opinion } from "../Opinion"
 import { LastPrompt } from '../LastPromptNuncaNunca';
 import { PromptDisplay } from '../PromptDisplayNuncaNunca'
+import axios from "axios"
+import { LikeDislikeComponent } from "../LikeDislikeComponent"
 
 interface Props {
     socket:WebSocket|undefined;
@@ -38,7 +39,7 @@ export const Game = ({socket}:Props) => {
     const [turn, setTurn] = useState(1)
     const [prompt, setPrompt] = useState("")
     const [level, setLevel] = useState(0)
-    const [opinion, setOpinion] = useState(1)
+    const [opinion, setOpinion] = useState("none")
     const [players, setPlayers] = useState<Players[]>([])
     const [last_prompt, setLastPrompt] = useState("");
     const [doneIt, setDoneIt] = useState(0)
@@ -59,7 +60,7 @@ export const Game = ({socket}:Props) => {
                     setLastPrompt(prompt)
                     setPrompt(data.new_prompt.phrase)
                     setLevel(data.new_prompt.lvl)
-                    setOpinion(0)
+                    setOpinion("")
                     data.round_end.map((_:RoundEndData) => setPlayers((players) => [...players, {
                         id:_.connection_id, 
                         user_name:_.user_name, 
@@ -83,7 +84,7 @@ export const Game = ({socket}:Props) => {
                         last_turn_points:0, 
                         turn_status: "playing"
                       }]))
-                    setOpinion(0)
+                    setOpinion("")
                 }
             };
         }
@@ -104,6 +105,36 @@ export const Game = ({socket}:Props) => {
         }
     }
     
+    async function sendOpinion(opinion:string) {
+        if (prompt) {
+            let opinion_response
+            if (opinion === "like") {
+              opinion_response = 1
+            } else {
+              opinion_response = 0
+            }
+      
+            const config = {
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              }
+            }
+            const data = {
+              phrase: prompt,
+              opinion: opinion_response,
+              level: level
+            }
+      
+            axios.post(`https://59fxcxkow4.execute-api.us-east-1.amazonaws.com/dev/nuncanunca/opinion`, data, config
+            ).then( function(response) {
+              console.log(response)
+      
+            }).catch( function(error) {
+              console.log(error)
+            })
+          }
+    }
 
 
     return (
@@ -114,14 +145,12 @@ export const Game = ({socket}:Props) => {
                 <div className={answer===1?styles.btn_active:styles.btn} onClick={() => setAsnwer(1)}>I have </div>
                 <div className={answer===0?styles.btn_active:styles.btn} onClick={() => setAsnwer(0)}>i have never</div>
             </div>
-            <span className={styles.desc}>How many players do you think have done it?</span>
-            <Counter count={guess} setCount={setGuess} max={players.length||100}/>
+            <div className={styles.text}>How many players do you think have done it?</div>
+            <Counter count={guess} setCount={setGuess} max={players.length||10}/>
             </>:
             <>
-            {!opinion?<Opinion phrase={prompt} level={level} setOpinion={setOpinion}/>:null}
-            <div className={styles.choice}>
-                <span>Waiting Other Players</span>
-            </div>
+            {!opinion?<LikeDislikeComponent handle_like={() => sendOpinion("like")} handle_dislike={() =>  sendOpinion("dislike")} opinion={opinion} setOpinion={setOpinion}/>:null}
+            <div className={styles.text}>Waiting Other Players</div>
             </>}
             {!turn?<div className={styles.btn_turn} onClick={() => handleClick()}>End Turn</div>:null}
             {show_last_turn?<div className={styles.btn_turn} onClick={() => handleShow()}>show last turn data</div>:null}
