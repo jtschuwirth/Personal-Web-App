@@ -1,11 +1,12 @@
 import styles from "./style.module.css"
-import { useState, useEffect } from "react";
+import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import axios from "axios"
-import {BiLike, BiDislike} from "react-icons/bi"
 
 interface Props {
   level:number;
   game:string;
+  opinion:string;
+  setOpinion:Dispatch<SetStateAction<string>>;
 }
 
 interface Phrase {
@@ -13,11 +14,10 @@ interface Phrase {
   lvl:string;
 }
 
-export const Game  = ({level, game}:Props) => {
+export const Game  = ({level, game, opinion, setOpinion}:Props) => {
   const [buffer, setBuffer] = useState<Phrase[]>([])
   const [phrase, setPhrase] = useState("");
   const [loading, setLoading] = useState(false)
-  const [opinion, setOpinion] = useState("none")
   const [phraseLevel, setPhraseLevel] = useState(1)
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export const Game  = ({level, game}:Props) => {
     if (loading) return;
     setLoading(true)
 
-    if (opinion!=="none" && phrase!=="") {
+    if (opinion && phrase) {
       let opinion_response
       if (opinion === "like") {
         opinion_response = 1
@@ -74,46 +74,18 @@ export const Game  = ({level, game}:Props) => {
       setBuffer(new_buffer)
     }
 
-    setOpinion("none")
+    setOpinion("")
     setLoading(false)
 
   }
-
-  async function handleDislike() {
-    if (opinion!=="dislike") {
-      setOpinion("dislike")
-    } else {
-      setOpinion("none")
-    }
-  }
-
-  async function handleLike() {
-    if (opinion!=="like") {
-      setOpinion("like")
-    } else {
-      setOpinion("none")
-    }
-  }
-
+  
   return (
-    <div className={styles.game_container}>
-      <div className={styles.opinion_container}>
-        <div 
-          className={opinion==="dislike"?styles[`like_container_active_${game}`]:styles[`like_container_${game}`]}
-          onClick={() => handleDislike()}
-          ><BiDislike size={20}/>
-        </div>
-        <div 
-          className={opinion==="like"?styles[`like_container_active_${game}`]:styles[`like_container_${game}`]}
-          onClick={() => handleLike()}
-          ><BiLike size={20}/>
-        </div>
-      </div>
+    <>
       <div className={styles.phrase_container}>
         <span className={styles.phrase}>{phrase}</span>
       </div>
       <button className={styles[`btn_${game}`]} onClick={() => handleClick()}>{loading?"Loading":"Get new prompt"}</button>
-    </div>
+    </>
 
   );
 };
