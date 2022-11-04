@@ -5,6 +5,7 @@ import { Foot } from "../../components/Foot"
 import { Title } from '../../components/TitleContainer';
 import { Game } from "../../components/GamePlayerPeopleSort";
 import { useSocket } from '../../hooks/useSocket';
+import { SimpleForm } from '../../components/SimpleForm';
 
 const GamePage: NextPage = () => {
   const [name, setName] = useState("")
@@ -33,19 +34,7 @@ const GamePage: NextPage = () => {
     return (
       <div className={styles.main}>
           <Title title="People Sort Party Mode" socket={socket}/>
-          <form onSubmit={onSubmit} className={styles.select_name_container}>
-              <div className={styles.inputs_container}>
-              <div className={styles.input_container}>
-                <input className={styles.input} name="name_input" type="text" required/>
-                <label className={styles.input_label}>Name</label>
-              </div>
-              <div className={styles.input_container}>
-                <input className={styles.input} name="room_input" type="text" required/>
-                <label className={styles.input_label}>Room Code</label>
-              </div>
-              </div>
-              <button className={styles.btn} type="submit">Join Game</button>
-            </form>
+          <SimpleForm onSubmit={onSubmit} inputs={[{title:"Name",name:"name_input"},{title:"Room Code",name:"room_input"}]}/>
         <Foot />
       </div>
     )
