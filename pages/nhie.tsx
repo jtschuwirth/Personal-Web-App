@@ -17,7 +17,7 @@ const NuncaNunca: NextPage = () => {
         <Title title="Never have i ever" />
         <LevelSelector level={level} setLevel={setLevel} game="nuncanunca"/>
         <div className={styles.game_container}>
-          <LikeDislikeComponent handle_like={() => setOpinion("like")} handle_dislike={() => setOpinion("dislike")}/>
+          <LikeDislikeComponent handle_like={() => setOpinion("like")} handle_dislike={() => setOpinion("dislike")} opinion={opinion} setOpinion={setOpinion}/>
           <Game 
             level={level} 
             game="nuncanunca"

@@ -45,11 +45,6 @@ const Home: NextPage = () => {
             <span className={styles.game_title}>Never have i ever</span>
           </div>
         </Link>
-        <Link href="/dfk" >
-          <div className={styles.game_container}>
-            <span className={styles.game_title}>Defi Kingdoms Dashboard</span>
-          </div>
-        </Link>
         </div>
         <Foot />
       </div>

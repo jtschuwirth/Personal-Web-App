@@ -5,19 +5,7 @@ import { Foot } from "../../components/Foot"
 import { SimpleForm } from '../../components/SimpleForm-dfk'
 import { HeroViewer } from '../../components/HeroViewer'
 import styles from '../../styles/DFK.module.css'
-
-async function getHeroes(address: String|null) {
-  if (!address) return
-  const config = {
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    }
-  };
-
-    let res = await fetch(`https://59fxcxkow4.execute-api.us-east-1.amazonaws.com/dev/dfk/heroes?address=${address}`, config)
-    return res.json()
-}
+import { getHeroes, stopProfession, resumeProfession, updateHeroes } from '../../requests'
 
 const DFK: NextPage = () => {
   const [address, setAddress] = useState(null)
@@ -33,8 +21,23 @@ const DFK: NextPage = () => {
     <div className={styles.main}>
       <div className={styles.main_content}>
       <SimpleForm onSubmit={onSubmit} inputs={[{title:"Address",name:"address"}]}/>
+      <button className={styles.button} onClick={() => {updateHeroes(address); heroes.refetch()}}>Update Heroes</button>
+      <div className={styles.all_buttons}>
+        <div className={styles.buttons}>
+          <button className={styles.button} onClick={() => {stopProfession(address, "mining"); heroes.refetch()}}>Stop Mining</button>
+          <button className={styles.button} onClick={() => {resumeProfession(address, "mining"); heroes.refetch()}}>Resume Mining</button>
+        </div>
+        <div className={styles.buttons}>
+          <button className={styles.button} onClick={() => {stopProfession(address, "fishing"); heroes.refetch()}}>Stop Fishing</button>
+          <button className={styles.button} onClick={() => {resumeProfession(address, "fishing"); heroes.refetch()}}>Resume Fishing</button>
+        </div>
+        <div className={styles.buttons}>
+          <button className={styles.button} onClick={() => {stopProfession(address, "foraging"); heroes.refetch()}}>Stop Foraging</button>
+          <button className={styles.button} onClick={() => {resumeProfession(address, "foraging"); heroes.refetch()}}>Resume Foraging</button>
+        </div>
+      </div>
       Heroes:
-      <HeroViewer heroes={heroes.isSuccess?heroes.data.heroes:[]}/>
+      <HeroViewer heroes={heroes.isSuccess&&heroes.data?heroes.data?.data.heroes:[]}/>
 
       </div>
       <Foot />
