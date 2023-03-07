@@ -129,6 +129,7 @@ const Host: NextPage = () => {
         <div className={styles.room}>Code: {room}</div>
         <button className={styles.btn_start} onClick={() => handleStartGame()}>Start Game</button>
         <PlayerDisplay players={players}/>
+        <div className={styles.room}>Join Room</div>
         <QRCode value={`https://app.jtschuwirth.click/peoplesortparty/game?room=${room}`} />
         </div>
         <Foot />

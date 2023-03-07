@@ -31,13 +31,13 @@
 
 .btn {
   font-size: 24px;
-  background-color: white;
-  color: #DE4545;
-  border: 1px solid #DE4545;
+  background-color: #DE4545;
+  color: white;
   padding: 15px;
   border-radius: 60px;
   font-size: 17px;
   font-weight: 100;
+  border: 3px solid white
 }
 
 .inputs_container {
@@ -93,7 +93,8 @@
 
 @media (hover: hover) {
   .btn:hover {
-    color: white;
-    background-color: #DE4545; 
+    color: #DE4545;
+    background-color: white; 
+    border: 3px solid white
   }
 }
