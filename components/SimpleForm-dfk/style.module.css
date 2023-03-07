@@ -1,0 +1,84 @@
+ .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 300px;
+    padding: 2em 1em;
+    background-color: white;
+    border-radius: 15px;
+    gap: 10px;
+  }
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .input_container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input {
+    display: block;
+    position: relative;
+    background-color: transparent;
+    border: 1px solid #DE4545;
+    padding: 10px 15px;
+    border-radius: 60px;
+    font-size: 17px;
+    color: #DE4545;
+    z-index: 1;
+    transition: 0.5s;
+  }
+
+  
+  .input:focus {
+    background-color: #DE4545;
+    color: white;
+    outline: none;
+    margin-top: 35px;
+    transition: 0.5s;
+  }
+  
+  .input:valid {
+    margin-top: 35px;
+  }
+  
+  .input:valid ~ label {
+    font-style: italic;
+  }
+
+  .label {
+    font-size: 17px;
+    font-weight: 100;
+    color: #DE4545;
+    padding: 10px 15px;
+    z-index: 2;
+    display: block;
+    position: absolute;
+    pointer-events: none;
+  }
+
+.btn {
+    font-size: 24px;
+    background-color: white;
+    color: #DE4545;
+    border: 1px solid #DE4545;
+    padding: 15px;
+    border-radius: 60px;
+    font-size: 17px;
+    font-weight: 100;
+  }
+  
+
+  
+  @media (hover: hover) {
+    .btn:hover {
+      color: white;
+      background-color: #DE4545; 
+    }
+  }
+  

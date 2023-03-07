@@ -7,6 +7,7 @@ import { Title } from '../../components/TitleContainer';
 import { PlayerDisplay } from "../../components/PlayerDisplay"
 import { useSocket } from "../../hooks/useSocket"
 import { PlayerStack } from "../../components/PlayerStack"
+import QRCode from "react-qr-code";
 
 interface Players {
   id: string;
@@ -125,9 +126,11 @@ const Host: NextPage = () => {
       <div className={styles.main}>
         <Title title="People Sort Party Mode" socket={socket}/>
         <div className={styles.start_game}>
-        <span className={styles.room}>Room Id: {room}</span>
+        <div className={styles.room}>Code: {room}</div>
         <button className={styles.btn_start} onClick={() => handleStartGame()}>Start Game</button>
         <PlayerDisplay players={players}/>
+        <div className={styles.room}>Join Room</div>
+        <QRCode value={`https://app.jtschuwirth.click/peoplesortparty/game?room=${room}`} />
         </div>
         <Foot />
       </div>
@@ -138,7 +141,7 @@ const Host: NextPage = () => {
     <div className={styles.main}>
       <div className={styles.main_title}>
       <Title title="People Sort Party Mode" socket={socket}/>
-      <span className={styles.room}>Room Id: {room}</span>
+      <span className={styles.room}>Room Code: {room}</span>
       <div className={styles.main_content}>
         <div className={styles.side_section}>
         <div className={styles.standings}>

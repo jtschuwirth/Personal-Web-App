@@ -12,6 +12,13 @@
     justify-content: center;
 }
 
+.text {
+    color: white;
+    font-size: 17px;
+    width: 300px;
+    text-align: center;
+}
+
 .btn {
     display: flex;
     width: 150px;
@@ -46,12 +53,6 @@
     border-radius:15px;
     border: 2px solid #1D3557;
     text-align: center;
-}
-
-.desc {
-    width: 300px;
-    text-align: center;
-    color: white;
 }
 
 .phrase_container {

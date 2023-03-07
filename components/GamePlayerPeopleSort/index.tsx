@@ -79,9 +79,7 @@ export const Game = ({socket}:Props) => {
             <div className={styles.game}>
                 <PlayerStack players={players} setPlayers={setPlayers} prompt={prompt}/>
             </div>:
-            <div className={styles.choice}>
-                <span>Waiting Other Players</span>
-            </div>}
+            <div className={styles.text}>Waiting Other Players</div>}
             {!turn?<div className={styles.btn_turn} onClick={() => handleClick()}>End Turn</div>:null}
         </div>
 

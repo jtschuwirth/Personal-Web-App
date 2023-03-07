@@ -5,11 +5,14 @@ import { Foot } from "../../components/Foot"
 import { Title } from '../../components/TitleContainer';
 import { Game } from "../../components/GamePlayerPeopleSort";
 import { useSocket } from '../../hooks/useSocket';
+import { SimpleForm } from '../../components/SimpleForm';
+import { useRouter } from "next/router"
 
 const GamePage: NextPage = () => {
   const [name, setName] = useState("")
   const [room, setRoom] = useState("")
 
+  const router = useRouter()
   const socket = useSocket(name&&room?`wss://cwap247wcg.execute-api.us-east-1.amazonaws.com/production?name=${name}&room=${room}`:null)
 
   useEffect(() => {
@@ -19,7 +22,7 @@ const GamePage: NextPage = () => {
         socket.close();
       }
     };
-  },[socket])
+  },[socket, router, setRoom])
 
   function onSubmit(event:any) {
     event.preventDefault()
@@ -33,13 +36,7 @@ const GamePage: NextPage = () => {
     return (
       <div className={styles.main}>
           <Title title="People Sort Party Mode" socket={socket}/>
-            <form onSubmit={onSubmit} className={styles.select_name_container}>
-              <span className={styles.pick_name}>Choose a Name</span>
-              <input className={styles.input} name="name_input"/>
-              <span className={styles.pick_name}>Enter the room code</span>
-              <input className={styles.input} name="room_input"/>
-              <button className={styles.btn} type="submit">Join Game</button>
-            </form>
+          <SimpleForm onSubmit={onSubmit} inputs={[{title:"Name",name:"name_input"},{title:"Room Code",name:"room_input", defaultValue: router.query.room}]}/>
         <Foot />
       </div>
     )
