@@ -8,6 +8,7 @@ import { Title } from '../../components/TitleContainer';
 import { PlayerDisplay } from "../../components/PlayerDisplay"
 import { LastPrompt } from "../../components/LastPromptNuncaNunca"
 import { useSocket } from "../../hooks/useSocket"
+import QRCode from "react-qr-code";
 
 interface Players {
   id: string;
@@ -133,6 +134,7 @@ const Host: NextPage = () => {
         <div className={styles.room}>Code: {room}</div>
         <button className={styles.btn_start} onClick={() => handleStartGame()}>Start Game</button>
         <PlayerDisplay players={players}/>
+        <QRCode value={`https://app.jtschuwirth.click/nuncanuncaparty/game?room=${room}`} />
         </div>
         <Foot />
       </div>

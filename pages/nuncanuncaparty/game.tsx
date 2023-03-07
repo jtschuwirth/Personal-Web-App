@@ -6,12 +6,15 @@ import { Title } from '../../components/TitleContainer';
 import { Game } from "../../components/GamePlayerNuncaNunca";
 import { useSocket } from '../../hooks/useSocket';
 import { SimpleForm } from '../../components/SimpleForm';
+import { useRouter } from "next/router"
 
 
 const GamePage: NextPage = () => {
   const [name, setName] = useState("")
   const [room, setRoom] = useState("")
 
+
+  const router = useRouter()
   const socket = useSocket(name&&room?`wss://2mgs44ly30.execute-api.us-east-1.amazonaws.com/production?name=${name}&room=${room}`:null)
 
   useEffect(() => {
@@ -35,7 +38,7 @@ const GamePage: NextPage = () => {
     return (
       <div className={styles.main}>
           <Title title="Never have i ever Party Mode" socket={socket}/>
-          <SimpleForm onSubmit={onSubmit} inputs={[{title:"Name",name:"name_input"},{title:"Room Code",name:"room_input"}]}/>
+          <SimpleForm onSubmit={onSubmit} inputs={[{title:"Name",name:"name_input"},{title:"Room Code",name:"room_input", defaultValue: router.query.room}]}/>
         <Foot />
       </div>
     )

@@ -3,7 +3,7 @@ import styles from "./style.module.css"
 
 interface Props {
     onSubmit: FormEventHandler;
-    inputs: {title:string, name:string}[];
+    inputs: {title:string, name:string, defaultValue?:string|string[]|undefined}[];
 }
 
 export const SimpleForm = ({onSubmit, inputs}:Props) => {
@@ -14,7 +14,7 @@ export const SimpleForm = ({onSubmit, inputs}:Props) => {
             <div className={styles.inputs}>
                 {inputs.map((_, index) => 
                     <div className={styles.input_container} key={index}>
-                        <input className={styles.input} name={_.name} type="text" required/>
+                        <input className={styles.input} name={_.name} type="text" defaultValue={_.defaultValue}required/>
                         <label className={styles.label}>{_.title}</label>
                     </div>
                 )}
