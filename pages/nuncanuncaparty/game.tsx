@@ -29,8 +29,12 @@ const GamePage: NextPage = () => {
   function onSubmit(event:any) {
     event.preventDefault()
     if (event.target.name_input.value.length<12 ) {
+      if (event.target.room_input.value) {
+        setRoom(event.target.room_input.value.toUpperCase())
+      } else {
+        setRoom(event.target.room_input.defaultValue.toUpperCase())
+      }
       setName(event.target.name_input.value)
-      setRoom(event.target.room_input.value.toUpperCase())
     } else return;
   }
 
